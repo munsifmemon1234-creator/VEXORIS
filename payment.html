@@ -798,20 +798,21 @@
                DISPLAY ORDER
             ========================== */
 
-            document.getElementById("serviceName").textContent =
-                order.serviceName || "VEXORIS Service";
+document.getElementById("serviceName").textContent =
+    order.service?.name || "VEXORIS Service";
 
 
-            document.getElementById("customerName").textContent =
-                order.customerName || "—";
+document.getElementById("customerName").textContent =
+    order.customer?.name || "—";
 
 
-            document.getElementById("customerEmail").textContent =
-                order.email || "—";
+document.getElementById("customerEmail").textContent =
+    order.customer?.email || "—";
 
 
-            document.getElementById("customerPhone").textContent =
-                order.phone || "—";
+document.getElementById("customerPhone").textContent =
+    order.customer?.phone || "—";
+            
 
 
             document.getElementById("orderReference").textContent =
@@ -827,15 +828,15 @@
 
 
             if (
-                order.price !== null &&
-                order.price !== undefined
-            ) {
+    order.service?.price !== null &&
+    order.service?.price !== undefined
+) {
 
-                totalPrice.textContent =
-                    "PKR " +
-                    Number(order.price).toLocaleString("en-PK");
+    totalPrice.textContent =
+        "PKR " +
+        Number(order.service.price).toLocaleString("en-PK");
 
-            } else {
+} else {
 
                 totalPrice.textContent =
                     "Custom Quote";
