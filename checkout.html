@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | VEXORIS</title>
+
+    <meta
+        name="description"
+        content="Complete your VEXORIS service order securely."
+    >
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!--
+        VEXORIS logo
+        Keep this path if your logo is inside assets/
+    -->
+    <link
+        rel="icon"
+        type="image/png"
+        href="assets/1C0B85DB-9867-4DA0-8F96-12E14873F6CC.png"
+    >
+
+    <style>
+
+        /* =========================================
+           VEXORIS CHECKOUT PAGE
+           ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #06101d;
+            --bg-light: #0a1728;
+            --card: rgba(13, 27, 45, 0.92);
+            --card-light: rgba(16, 33, 54, 0.95);
+
+            --border: rgba(148, 163, 184, 0.16);
+
+            --text: #f8fafc;
+            --muted: #94a3b8;
+
+            --primary: #38bdf8;
+            --primary-dark: #0ea5e9;
+
+            --success: #22c55e;
+
+            --shadow:
+                0 25px 70px rgba(0, 0, 0, 0.28);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            color: var(--text);
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(56, 189, 248, 0.08),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 90% 20%,
+                    rgba(14, 165, 233, 0.06),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #040b14,
+                    #081523 50%,
+                    #050d18
+                );
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font-family: inherit;
+        }
+
+
+        /* =========================================
+           HEADER
+           ========================================= */
+
+        .checkout-header {
+            height: 78px;
+
+            padding: 0 6%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            background: rgba(6, 16, 29, 0.88);
+
+            border-bottom:
+                1px solid var(--border);
+
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-area img {
+            width: 44px;
+            height: 44px;
+
+            object-fit: contain;
+        }
+
+        .logo-area span {
+            font-size: 18px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+        }
+
+        .back-home {
+            color: var(--muted);
+
+            font-size: 13px;
+            font-weight: 500;
+
+            transition: 0.3s ease;
+        }
+
+        .back-home:hover {
+            color: var(--primary);
+        }
+
+
+        /* =========================================
+           PAGE
+           ========================================= */
+
+        .checkout-page {
+            width: min(1150px, 92%);
+
+            margin: 0 auto;
+
+            padding: 70px 0 80px;
+        }
+
+
+        /* =========================================
+           PAGE INTRO
+           ========================================= */
+
+        .page-intro {
+            text-align: center;
+
+            max-width: 750px;
+
+            margin: 0 auto 48px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+
+            color: var(--primary);
+
+            font-size: 11px;
+            font-weight: 700;
+
+            letter-spacing: 2.5px;
+
+            margin-bottom: 13px;
+        }
+
+        .page-intro h1 {
+            font-size: clamp(32px, 5vw, 52px);
+
+            line-height: 1.15;
+
+            margin-bottom: 15px;
+        }
+
+        .page-intro p {
+            color: var(--muted);
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================
+           MAIN GRID
+           ========================================= */
+
+        .checkout-grid {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1.35fr)
+                minmax(300px, 0.75fr);
+
+            gap: 25px;
+
+            align-items: start;
+        }
+
+
+        /* =========================================
+           CARDS
+           ========================================= */
+
+        .checkout-card {
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(16, 32, 52, 0.97),
+                    rgba(8, 21, 36, 0.97)
+                );
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 22px;
+
+            padding: 32px;
+
+            box-shadow: var(--shadow);
+        }
+
+
+        /* =========================================
+           CARD HEADING
+           ========================================= */
+
+        .card-heading {
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            margin-bottom: 30px;
+        }
+
+        .step-number {
+            width: 43px;
+            height: 43px;
+
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 13px;
+
+            color: var(--primary);
+
+            background:
+                rgba(56, 189, 248, 0.10);
+
+            border:
+                1px solid rgba(56, 189, 248, 0.16);
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .card-heading small {
+            display: block;
+
+            color: var(--primary);
+
+            font-size: 9px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+        }
+
+        .card-heading h2 {
+            font-size: 20px;
+
+            margin-top: 2px;
+        }
+
+
+        /* =========================================
+           FORM
+           ========================================= */
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 16px;
+        }
+
+        .form-group label {
+            display: block;
+
+            color: #dbe7f5;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            margin-bottom: 8px;
+        }
+
+        .required {
+            color: var(--primary);
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+
+            border:
+                1px solid rgba(148, 163, 184, 0.20);
+
+            border-radius: 12px;
+
+            padding: 14px 15px;
+
+            background:
+                rgba(3, 12, 22, 0.85);
+
+            color: var(--text);
+
+            outline: none;
+
+            font-size: 13px;
+
+            transition:
+                border-color 0.25s ease,
+                box-shadow 0.25s ease,
+                background 0.25s ease;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #64748b;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--primary);
+
+            background:
+                rgba(4, 16, 29, 0.95);
+
+            box-shadow:
+                0 0 0 3px rgba(56, 189, 248, 0.08);
+        }
+
+        textarea {
+            min-height: 125px;
+
+            resize: vertical;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+
+        /* =========================================
+           SERVICE SELECTED MESSAGE
+           ========================================= */
+
+        .service-message {
+            display: none;
+
+            padding: 14px 16px;
+
+            margin-bottom: 22px;
+
+            border-radius: 13px;
+
+            background:
+                rgba(56, 189, 248, 0.07);
+
+            border:
+                1px solid rgba(56, 189, 248, 0.16);
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            line-height: 1.6;
+        }
+
+        .service-message strong {
+            color: var(--primary);
+        }
+
+
+        /* =========================================
+           CHECKBOX
+           ========================================= */
+
+        .terms-row {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            margin: 25px 0;
+        }
+
+        .terms-row input {
+            width: 16px;
+            height: 16px;
+
+            margin-top: 3px;
+
+            padding: 0;
+
+            accent-color: var(--primary);
+
+            box-shadow: none;
+        }
+
+        .terms-row label {
+            color: var(--muted);
+
+            font-size: 11px;
+
+            line-height: 1.7;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================
+           CONTINUE BUTTON
+           ========================================= */
+
+        .continue-btn {
+            width: 100%;
+
+            border: none;
+
+            border-radius: 12px;
+
+            padding: 15px 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary-dark),
+                    var(--primary)
+                );
+
+            color: #03111d;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .continue-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 15px 35px rgba(14, 165, 233, 0.22);
+        }
+
+
+        /* =========================================
+           ORDER SUMMARY
+           ========================================= */
+
+        .summary-card {
+            position: sticky;
+
+            top: 103px;
+        }
+
+        .selected-service {
+            padding: 19px;
+
+            border-radius: 15px;
+
+            background:
+                rgba(56, 189, 248, 0.07);
+
+            border:
+                1px solid rgba(56, 189, 248, 0.16);
+
+            margin-bottom: 22px;
+        }
+
+        .selected-service .service-label {
+            display: block;
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 7px;
+        }
+
+        .selected-service h3 {
+            color: var(--text);
+
+            font-size: 17px;
+
+            line-height: 1.4;
+        }
+
+        .selected-service p {
+            color: var(--muted);
+
+            font-size: 11px;
+
+            margin-top: 5px;
+        }
+
+
+        /* =========================================
+           SUMMARY ITEMS
+           ========================================= */
+
+        .summary-item {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 16px 0;
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+        .summary-item span {
+            color: var(--muted);
+
+            font-size: 12px;
+        }
+
+        .summary-item strong {
+            font-size: 12px;
+
+            text-align: right;
+        }
+
+
+        /* =========================================
+           TOTAL
+           ========================================= */
+
+        .total {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding-top: 22px;
+        }
+
+        .total span {
+            color: var(--text);
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .total strong {
+            color: var(--primary);
+
+            font-size: 22px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================
+           INFORMATION BOX
+           ========================================= */
+
+        .info-box {
+            margin-top: 25px;
+
+            padding: 17px;
+
+            border-radius: 14px;
+
+            background:
+                rgba(148, 163, 184, 0.045);
+
+            border:
+                1px solid var(--border);
+        }
+
+        .info-box strong {
+            display: block;
+
+            color: var(--text);
+
+            font-size: 12px;
+
+            margin-bottom: 5px;
+        }
+
+        .info-box p {
+            color: var(--muted);
+
+            font-size: 10px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================
+           SECURITY
+           ========================================= */
+
+        .security-list {
+            list-style: none;
+
+            margin-top: 20px;
+        }
+
+        .security-list li {
+            color: var(--muted);
+
+            font-size: 10px;
+
+            line-height: 2;
+
+            display: flex;
+
+            gap: 8px;
+        }
+
+        .security-list li::before {
+            content: "✓";
+
+            color: var(--success);
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+
+        .checkout-footer {
+            text-align: center;
+
+            border-top:
+                1px solid var(--border);
+
+            padding: 25px 20px;
+
+            color: #64748b;
+
+            font-size: 10px;
+        }
+
+
+        /* =========================================
+           MOBILE
+           ========================================= */
+
+        @media (max-width: 850px) {
+
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-card {
+                position: static;
+            }
+
+            .checkout-header {
+                padding: 0 4%;
+            }
+
+            .checkout-page {
+                padding: 50px 0 60px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .checkout-card {
+                padding: 22px;
+                border-radius: 18px;
+            }
+
+            .page-intro {
+                margin-bottom: 32px;
+            }
+
+            .page-intro h1 {
+                font-size: 34px;
+            }
+
+            .logo-area span {
+                font-size: 16px;
+            }
+
+            .back-home {
+                font-size: 11px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         HEADER
+         ========================================= -->
+
+    <header class="checkout-header">
+
+        <a href="index.html" class="logo-area">
+
+            <img
+                src="assets/IMG_9899.png"
+                alt="VEXORIS Logo"
+            >
+
+            <span>VEXORIS</span>
+
+        </a>
+
+
+        <a
+            href="index.html#pricing"
+            class="back-home"
+        >
+            ← Back to VEXORIS
+        </a>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MAIN CHECKOUT
+         ========================================= -->
+
+    <main class="checkout-page">
+
+
+        <!-- PAGE INTRO -->
+
+        <div class="page-intro">
+
+            <span class="eyebrow">
+                VEXORIS SERVICES
+            </span>
+
+            <h1>
+                Complete Your Order
+            </h1>
+
+            <p>
+                Provide your details and project requirements
+                to continue with your VEXORIS service order.
+            </p>
+
+        </div>
+
+
+
+        <!-- CHECKOUT GRID -->
+
+        <div class="checkout-grid">
+
+
+
+            <!-- =================================
+                 CUSTOMER DETAILS
+                 ================================= -->
+
+            <section class="checkout-card">
+
+
+                <div class="card-heading">
+
+                    <span class="step-number">
+                        01
+                    </span>
+
+                    <div>
+
+                        <small>
+                            CUSTOMER DETAILS
+                        </small>
+
+                        <h2>
+                            Tell Us About You
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SELECTED SERVICE MESSAGE -->
+
+                <div
+                    class="service-message"
+                    id="serviceMessage"
+                >
+                    You selected
+                    <strong id="serviceMessageName">
+                        —
+                    </strong>.
+                    Please complete your details below.
+                </div>
+
+
+
+                <!-- FORM -->
+
+                <form id="checkoutForm">
+
+
+                    <!-- NAME + EMAIL -->
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label for="fullName">
+                                Full Name
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="fullName"
+                                name="fullName"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email Address
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- PHONE -->
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone / WhatsApp
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="+92 3XX XXXXXXX"
+                            autocomplete="tel"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- SERVICE -->
+
+                    <div class="form-group">
+
+                        <label for="service">
+                            Selected Service
+                            <span class="required">*</span>
+                        </label>
+
+                        <select
+                            id="service"
+                            name="service"
+                            required
+                        >
+
+                            <option value="">
+                                Select a service
+                            </option>
+
+                            <option value="starter">
+                                Starter Website — PKR 25,000
+                            </option>
+
+                            <option value="business">
+                                Business Website — PKR 60,000
+                            </option>
+
+                            <option value="custom">
+                                Custom Web Solution — Custom Quote
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- REQUIREMENTS -->
+
+                    <div class="form-group">
+
+                        <label for="requirements">
+                            Project Requirements
+                        </label>
+
+                        <textarea
+                            id="requirements"
+                            name="requirements"
+                            placeholder="Tell us about your project, required pages, features, design preferences, deadline, or anything else we should know."
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <!-- TERMS -->
+
+                    <div class="terms-row">
+
+                        <input
+                            type="checkbox"
+                            id="terms"
+                            required
+                        >
+
+                        <label for="terms">
+
+                            I confirm that the information provided
+                            is correct and that I am requesting
+                            services directly from VEXORIS.
+
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- CONTINUE -->
+
+                    <button
+                        type="submit"
+                        class="continue-btn"
+                    >
+                        Continue to Order Review →
+                    </button>
+
+
+                </form>
+
+            </section>
+
+
+
+            <!-- =================================
+                 ORDER SUMMARY
+                 ================================= -->
+
+            <aside class="checkout-card summary-card">
+
+
+                <div class="card-heading">
+
+                    <span class="step-number">
+                        02
+                    </span>
+
+                    <div>
+
+                        <small>
+                            ORDER SUMMARY
+                        </small>
+
+                        <h2>
+                            Your Selection
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SELECTED SERVICE -->
+
+                <div class="selected-service">
+
+                    <span class="service-label">
+                        Selected Service
+                    </span>
+
+                    <h3 id="summaryService">
+                        Not selected
+                    </h3>
+
+                    <p id="summaryDescription">
+                        Choose a service to see the order amount.
+                    </p>
+
+                </div>
+
+
+
+                <!-- CUSTOMER -->
+
+                <div class="summary-item">
+
+                    <span>
+                        Customer
+                    </span>
+
+                    <strong id="summaryCustomer">
+                        —
+                    </strong>
+
+                </div>
+
+
+
+                <!-- SERVICE -->
+
+                <div class="summary-item">
+
+                    <span>
+                        Service
+                    </span>
+
+                    <strong id="summaryServiceSmall">
+                        —
+                    </strong>
+
+                </div>
+
+
+
+                <!-- AMOUNT -->
+
+                <div class="summary-item">
+
+                    <span>
+                        Service Amount
+                    </span>
+
+                    <strong id="summaryAmount">
+                        —
+                    </strong>
+
+                </div>
+
+
+
+                <!-- TOTAL -->
+
+                <div class="total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="totalAmount">
+                        —
+                    </strong>
+
+                </div>
+
+
+
+                <!-- INFO -->
+
+                <div class="info-box">
+
+                    <strong>
+                        VEXORIS Direct Services
+                    </strong>
+
+                    <p>
+                        Payments are collected only for services
+                        provided directly by VEXORIS. VEXORIS does
+                        not collect payments on behalf of third-party
+                        merchants, vendors, or businesses.
+                    </p>
+
+                </div>
+
+
+
+                <!-- SECURITY -->
+
+                <ul class="security-list">
+
+                    <li>
+                        Direct VEXORIS service order
+                    </li>
+
+                    <li>
+                        Clear order reference
+                    </li>
+
+                    <li>
+                        Secure payment step follows checkout
+                    </li>
+
+                    <li>
+                        Custom projects require a confirmed quote
+                    </li>
+
+                </ul>
+
+
+            </aside>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+
+    <footer class="checkout-footer">
+
+        © 2026 VEXORIS. All Rights Reserved.
+
+    </footer>
+
+
+
+    <!-- =========================================
+         CHECKOUT JAVASCRIPT
+         ========================================= -->
+
+    <script>
+
+        /*
+        ============================================
+        VEXORIS CHECKOUT SYSTEM
+        ============================================
+        */
+
+
+        const services = {
+
+            starter: {
+                name: "Starter Website",
+                price: 25000,
+                description:
+                    "A professional website for individuals and small businesses."
+            },
+
+            business: {
+                name: "Business Website",
+                price: 60000,
+                description:
+                    "A complete professional website for growing businesses."
+            },
+
+            custom: {
+                name: "Custom Web Solution",
+                price: null,
+                description:
+                    "A tailored web solution based on your specific requirements."
+            }
+
+        };
+
+
+
+        /*
+        ============================================
+        GET ELEMENTS
+        ============================================
+        */
+
+        const serviceSelect =
+            document.getElementById("service");
+
+        const serviceMessage =
+            document.getElementById("serviceMessage");
+
+        const serviceMessageName =
+            document.getElementById("serviceMessageName");
+
+        const summaryService =
+            document.getElementById("summaryService");
+
+        const summaryServiceSmall =
+            document.getElementById("summaryServiceSmall");
+
+        const summaryDescription =
+            document.getElementById("summaryDescription");
+
+        const summaryAmount =
+            document.getElementById("summaryAmount");
+
+        const totalAmount =
+            document.getElementById("totalAmount");
+
+        const summaryCustomer =
+            document.getElementById("summaryCustomer");
+
+        const fullName =
+            document.getElementById("fullName");
+
+        const checkoutForm =
+            document.getElementById("checkoutForm");
+
+
+
+        /*
+        ============================================
+        FORMAT PRICE
+        ============================================
+        */
+
+        function formatPrice(price) {
+
+            if (price === null) {
+                return "Custom Quote";
+            }
+
+            return "PKR " +
+                price.toLocaleString("en-PK");
+
+        }
+
+
+
+        /*
+        ============================================
+        UPDATE SERVICE
+        ============================================
+        */
+
+        function updateService() {
+
+            const selected =
+                services[serviceSelect.value];
+
+
+            if (!selected) {
+
+                summaryService.textContent =
+                    "Not selected";
+
+                summaryServiceSmall.textContent =
+                    "—";
+
+                summaryDescription.textContent =
+                    "Choose a service to see the order amount.";
+
+                summaryAmount.textContent =
+                    "—";
+
+                totalAmount.textContent =
+                    "—";
+
+                serviceMessage.style.display =
+                    "none";
+
+                return;
+
+            }
+
+
+
+            summaryService.textContent =
+                selected.name;
+
+            summaryServiceSmall.textContent =
+                selected.name;
+
+            summaryDescription.textContent =
+                selected.description;
+
+            summaryAmount.textContent =
+                formatPrice(selected.price);
+
+            totalAmount.textContent =
+                formatPrice(selected.price);
+
+
+
+            serviceMessageName.textContent =
+                selected.name;
+
+            serviceMessage.style.display =
+                "block";
+
+        }
+
+
+
+        /*
+        ============================================
+        READ SERVICE FROM INDEX PAGE
+        ============================================
+        */
+
+        const urlParams =
+            new URLSearchParams(
+                window.location.search
+            );
+
+        const requestedService =
+            urlParams.get("service");
+
+
+        if (
+            requestedService &&
+            services[requestedService]
+        ) {
+
+            serviceSelect.value =
+                requestedService;
+
+        }
+
+
+
+        /*
+        ============================================
+        INITIAL UPDATE
+        ============================================
+        */
+
+        updateService();
+
+
+
+        /*
+        ============================================
+        SERVICE CHANGE
+        ============================================
+        */
+
+        serviceSelect.addEventListener(
+            "change",
+            updateService
+        );
+
+
+
+        /*
+        ============================================
+        CUSTOMER NAME LIVE UPDATE
+        ============================================
+        */
+
+        fullName.addEventListener(
+            "input",
+            function () {
+
+                summaryCustomer.textContent =
+                    this.value.trim() || "—";
+
+            }
+        );
+
+
+
+        /*
+        ============================================
+        SUBMIT CHECKOUT
+        ============================================
+        */
+
+        checkoutForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                const selected =
+                    services[serviceSelect.value];
+
+
+                if (!selected) {
+
+                    alert(
+                        "Please select a service before continuing."
+                    );
+
+                    serviceSelect.focus();
+
+                    return;
+
+                }
+
+
+
+                /*
+                Create order reference
+                */
+
+                const orderReference =
+                    "VEX-" +
+                    Math.random()
+                        .toString(36)
+                        .substring(2, 10)
+                        .toUpperCase();
+
+
+
+                /*
+                Save order information
+
+                This will later be used by
+                payment.html and thank-you.html.
+                */
+
+                const order = {
+
+                    reference:
+                        orderReference,
+
+                    customer: {
+
+                        name:
+                            document
+                                .getElementById("fullName")
+                                .value
+                                .trim(),
+
+                        email:
+                            document
+                                .getElementById("email")
+                                .value
+                                .trim(),
+
+                        phone:
+                            document
+                                .getElementById("phone")
+                                .value
+                                .trim()
+
+                    },
+
+                    service: {
+
+                        id:
+                            serviceSelect.value,
+
+                        name:
+                            selected.name,
+
+                        price:
+                            selected.price
+
+                    },
+
+                    requirements:
+                        document
+                            .getElementById("requirements")
+                            .value
+                            .trim(),
+
+                    createdAt:
+                        new Date().toISOString(),
+
+                    paymentStatus:
+                        "pending"
+
+                };
+
+
+
+                /*
+                Save order in browser
+
+                IMPORTANT:
+                This is only temporary frontend
+                storage. Later, the real backend
+                will handle orders securely.
+                */
+
+                localStorage.setItem(
+                    "vexorisOrder",
+                    JSON.stringify(order)
+                );
+
+
+
+                /*
+                NEXT STEP
+
+                We will create payment.html next.
+                */
+
+                alert(
+                    "Checkout details saved successfully.\n\n" +
+                    "Order Reference: " +
+                    orderReference
+                );
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
