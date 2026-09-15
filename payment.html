@@ -667,8 +667,90 @@
 
             <p>
                 <strong>IBAN:</strong>
-                PK25SONE0 050920018247454
+                PK25SONE0050920018247454
             </p>
+
+        </div>
+
+
+        <!-- PAYMENT CONFIRMATION -->
+
+        <div class="payment-confirmation">
+
+            <h3>Payment Confirmation</h3>
+
+            <p>
+                After completing the bank transfer, please provide
+                your payment details below.
+            </p>
+
+
+            <div class="form-group">
+
+                <label for="paymentCustomerName">
+                    Customer Name
+                </label>
+
+                <input
+                    type="text"
+                    id="paymentCustomerName"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="paymentAccountNumber">
+                    Account Number
+                </label>
+
+                <input
+                    type="text"
+                    id="paymentAccountNumber"
+                    placeholder="Enter the account number used for payment"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="transactionId">
+                    Transaction ID / TRX ID
+                </label>
+
+                <input
+                    type="text"
+                    id="transactionId"
+                    placeholder="Enter your transaction ID"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="paymentScreenshot">
+                    Payment Screenshot
+                </label>
+
+                <input
+                    type="file"
+                    id="paymentScreenshot"
+                    accept="image/*"
+                    required
+                >
+
+                <small>
+                    Upload a clear screenshot showing your payment transaction.
+                </small>
+
+            </div>
 
         </div>
 
