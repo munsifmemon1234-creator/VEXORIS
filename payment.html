@@ -619,105 +619,141 @@
 
 
 
-                /* =========================
-                       BANK TRANSFER
-                   ========================= */
+                <!-- BANK TRANSFER -->
 
-if (
-    selected.value === "bank"
-) {
+<div class="method" id="bankMethod">
 
-    const customerName =
-        document.getElementById("paymentCustomerName").value.trim();
+    <label class="method-header">
 
-    const accountNumber =
-        document.getElementById("paymentAccountNumber").value.trim();
+        <input
+            type="radio"
+            name="paymentMethod"
+            value="bank"
+        >
 
-    const transactionId =
-        document.getElementById("transactionId").value.trim();
+        <div>
 
-    const screenshot =
-        document.getElementById("paymentScreenshot").files[0];
+            <div class="method-name">
+                Bank Transfer
+            </div>
 
+            <div class="method-description">
+                Pay through direct bank transfer.
+            </div>
 
-    if (!customerName) {
+        </div>
 
-        alert("Please enter your name.");
-
-        return;
-
-    }
+    </label>
 
 
-    if (!accountNumber) {
+    <div class="method-content">
 
-        alert("Please enter the account number used for payment.");
+        <div class="bank-details">
 
-        return;
+            <p>
+                <strong>Bank:</strong>
+                Soneri Bank Limited
+            </p>
 
-    }
+            <p>
+                <strong>Account Title:</strong>
+                VEXORIS SOLUTIONS (PRIVATE) LIMITED
+            </p>
 
+            <p>
+                <strong>Account Number:</strong>
+                050920018247454
+            </p>
 
-    if (!transactionId) {
+            <p>
+                <strong>IBAN:</strong>
+                PK25SONE0 050920018247454
+            </p>
 
-        alert("Please enter your Transaction ID / TRX ID.");
-
-        return;
-
-    }
-
-
-    if (!screenshot) {
-
-        alert("Please upload your payment screenshot.");
-
-        return;
-
-    }
-
-
-    /* =========================
-       SAVE PAYMENT INFORMATION
-    ========================== */
-
-    order.payment = {
-
-        method: "bank",
-
-        customerName: customerName,
-
-        accountNumber: accountNumber,
-
-        transactionId: transactionId,
-
-        screenshotName: screenshot.name,
-
-        submittedAt: new Date().toISOString()
-
-    };
+        </div>
 
 
-    order.paymentStatus =
-        "verification_pending";
+        <!-- PAYMENT CONFIRMATION -->
+
+        <div class="payment-confirmation">
+
+            <h3>Payment Confirmation</h3>
+
+            <p>
+                After completing the bank transfer,
+                please provide your payment details below.
+            </p>
 
 
-    localStorage.setItem(
-        "vexorisOrder",
-        JSON.stringify(order)
-    );
+            <div class="form-group">
+
+                <label for="paymentCustomerName">
+                    Customer Name
+                </label>
+
+                <input
+                    type="text"
+                    id="paymentCustomerName"
+                    placeholder="Enter your full name"
+                >
+
+            </div>
 
 
-    /* =========================
-       GO TO THANK YOU PAGE
-    ========================== */
+            <div class="form-group">
 
-    window.location.href =
-        "thank-you.html";
+                <label for="paymentAccountNumber">
+                    Account Number
+                </label>
 
-    return;
+                <input
+                    type="text"
+                    id="paymentAccountNumber"
+                    placeholder="Enter the account number used for payment"
+                >
 
-}
+            </div>
 
+
+            <div class="form-group">
+
+                <label for="transactionId">
+                    Transaction ID / TRX ID
+                </label>
+
+                <input
+                    type="text"
+                    id="transactionId"
+                    placeholder="Enter your transaction ID"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="paymentScreenshot">
+                    Payment Screenshot
+                </label>
+
+                <input
+                    type="file"
+                    id="paymentScreenshot"
+                    accept="image/*"
+                >
+
+                <small>
+                    Upload a clear screenshot showing your payment transaction.
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+                
                <!-- JAZZCASH -->
 
 <div class="method" id="jazzcashMethod">
@@ -962,21 +998,109 @@ document.getElementById("customerPhone").textContent =
 
 
                 /* =========================
-                   BANK
-                ========================== */
+   BANK TRANSFER
+========================= */
 
-                if (
-                    selected.value === "bank"
-                ) {
+if (
+    selected.value === "bank"
+) {
 
-                    alert(
-                        "Bank transfer payment instructions will be provided by VEXORIS."
-                    );
+    const customerName =
+        document.getElementById("paymentCustomerName").value.trim();
 
-                    return;
+    const accountNumber =
+        document.getElementById("paymentAccountNumber").value.trim();
 
-                }
+    const transactionId =
+        document.getElementById("transactionId").value.trim();
 
+    const screenshot =
+        document.getElementById("paymentScreenshot").files[0];
+
+
+    if (!customerName) {
+
+        alert("Please enter your name.");
+
+        return;
+
+    }
+
+
+    if (!accountNumber) {
+
+        alert(
+            "Please enter the account number used for payment."
+        );
+
+        return;
+
+    }
+
+
+    if (!transactionId) {
+
+        alert(
+            "Please enter your Transaction ID / TRX ID."
+        );
+
+        return;
+
+    }
+
+
+    if (!screenshot) {
+
+        alert(
+            "Please upload your payment screenshot."
+        );
+
+        return;
+
+    }
+
+
+    /* =========================
+       SAVE PAYMENT INFORMATION
+    ========================== */
+
+    order.payment = {
+
+        method: "bank",
+
+        customerName: customerName,
+
+        accountNumber: accountNumber,
+
+        transactionId: transactionId,
+
+        screenshotName: screenshot.name,
+
+        submittedAt: new Date().toISOString()
+
+    };
+
+
+    order.paymentStatus =
+        "verification_pending";
+
+
+    localStorage.setItem(
+        "vexorisOrder",
+        JSON.stringify(order)
+    );
+
+
+    /* =========================
+       GO TO THANK YOU PAGE
+    ========================== */
+
+    window.location.href =
+        "thank-you.html";
+
+    return;
+
+}
 
                 /* =========================
                    MANUAL
