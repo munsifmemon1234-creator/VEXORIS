@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment | VEXORIS</title>
+
+    <meta
+        name="description"
+        content="Secure payment page for VEXORIS Solutions."
+    >
+
+    <link rel="icon" type="image/png"
+        href="assets/1C0B85DB-9867-4DA0-8F96-12E14873F6CC.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            width: 100%;
+            background: #08111f;
+            padding: 16px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 125px;
+            height: auto;
+            display: block;
+            filter: brightness(1.15);
+        }
+
+        .secure-text {
+            color: #cbd5e1;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* =========================
+           PAGE
+        ========================= */
+
+        .payment-wrapper {
+            width: 92%;
+            max-width: 1100px;
+            margin: 50px auto;
+        }
+
+        .page-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .page-heading h1 {
+            font-size: 32px;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .page-heading p {
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        .payment-container {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: 0 15px 45px rgba(15, 23, 42, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 22px;
+        }
+
+        /* =========================
+           ORDER SUMMARY
+        ========================= */
+
+        .service-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 18px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 14px;
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+        }
+
+        .summary-label {
+            color: #64748b;
+        }
+
+        .summary-value {
+            color: #0f172a;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .total-box {
+            margin-top: 22px;
+            padding: 18px;
+            background: #08111f;
+            border-radius: 14px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .total-box span:first-child {
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .total-price {
+            font-size: 23px;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+
+        .custom-note {
+            margin-top: 18px;
+            padding: 14px;
+            background: #f1f5f9;
+            border-radius: 10px;
+            color: #475569;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           PAYMENT METHODS
+        ========================= */
+
+        .method {
+            border: 1px solid #cbd5e1;
+            border-radius: 14px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: 0.25s ease;
+        }
+
+        .method:hover {
+            border-color: #38bdf8;
+        }
+
+        .method-header {
+            padding: 17px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            background: #ffffff;
+        }
+
+        .method-header input {
+            width: 18px;
+            height: 18px;
+            accent-color: #38bdf8;
+            cursor: pointer;
+        }
+
+        .method-name {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .method-description {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 3px;
+        }
+
+        .method-content {
+            display: none;
+            padding: 18px;
+            border-top: 1px solid #e2e8f0;
+            background: #f8fafc;
+        }
+
+        .method.active .method-content {
+            display: block;
+        }
+
+        /* =========================
+           EASYPaisa
+        ========================= */
+
+        .easypaisa-box {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 17px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .easypaisa-box h3 {
+            font-size: 16px;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .easypaisa-box p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #64748b;
+        }
+
+        .gateway-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 13px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            background: #fff7ed;
+            color: #c2410c;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #f97316;
+        }
+
+        /* =========================
+           BANK
+        ========================= */
+
+        .bank-details {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .bank-details p {
+            font-size: 13px;
+            color: #475569;
+            margin: 7px 0;
+        }
+
+        .bank-details strong {
+            color: #0f172a;
+        }
+
+        /* =========================
+           PAYMENT BUTTON
+        ========================= */
+
+        .pay-btn {
+            width: 100%;
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 8px;
+            background: #38bdf8;
+            color: #08111f;
+            font-family: "Poppins", sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .pay-btn:hover {
+            background: #0ea5e9;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .pay-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* =========================
+           SECURITY
+        ========================= */
+
+        .security {
+            text-align: center;
+            margin-top: 22px;
+            color: #64748b;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .security strong {
+            color: #334155;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            margin-top: 60px;
+            background: #08111f;
+            color: #94a3b8;
+            text-align: center;
+            padding: 22px;
+            font-size: 12px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .payment-container {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-wrapper {
+                margin-top: 35px;
+            }
+
+            .page-heading h1 {
+                font-size: 27px;
+            }
+
+            .secure-text {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            header {
+                padding: 14px 5%;
+            }
+
+            .logo img {
+                width: 110px;
+            }
+
+            .payment-wrapper {
+                width: 94%;
+            }
+
+            .card {
+                padding: 20px;
+                border-radius: 15px;
+            }
+
+            .page-heading h1 {
+                font-size: 24px;
+            }
+
+            .total-price {
+                font-size: 19px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <a href="index.html" class="logo">
+            <img
+                src="assets/IMG_9899.png"
+                alt="VEXORIS Logo"
+            >
+        </a>
+
+        <div class="secure-text">
+            Secure VEXORIS Payment
+        </div>
+
+    </header>
+
+
+    <!-- PAYMENT PAGE -->
+
+    <main class="payment-wrapper">
+
+        <div class="page-heading">
+
+            <h1>Complete Your Payment</h1>
+
+            <p>
+                Review your order and select your preferred payment method.
+            </p>
+
+        </div>
+
+
+        <div class="payment-container">
+
+
+            <!-- =========================
+                 ORDER SUMMARY
+            ========================== -->
+
+            <div class="card">
+
+                <div class="card-title">
+                    Order Summary
+                </div>
+
+                <div class="service-name" id="serviceName">
+                    Loading...
+                </div>
+
+                <div class="summary-row">
+
+                    <span class="summary-label">
+                        Customer
+                    </span>
+
+                    <span class="summary-value" id="customerName">
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span class="summary-label">
+                        Email
+                    </span>
+
+                    <span class="summary-value" id="customerEmail">
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span class="summary-label">
+                        Phone
+                    </span>
+
+                    <span class="summary-value" id="customerPhone">
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span class="summary-label">
+                        Order Reference
+                    </span>
+
+                    <span class="summary-value" id="orderReference">
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="total-box">
+
+                    <span>
+                        Amount Payable
+                    </span>
+
+                    <span
+                        class="total-price"
+                        id="totalPrice"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="custom-note"
+                    id="customNote"
+                    style="display:none;"
+                >
+                    Your selected service requires a custom quotation.
+                    VEXORIS will review your requirements and confirm the
+                    final project amount before payment.
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 PAYMENT METHODS
+            ========================== -->
+
+            <div class="card">
+
+                <div class="card-title">
+                    Select Payment Method
+                </div>
+
+
+                <!-- EASYPaisa -->
+
+                <div class="method" id="easypaisaMethod">
+
+                    <label class="method-header">
+
+                        <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="easypaisa"
+                        >
+
+                        <div>
+
+                            <div class="method-name">
+                                Easypaisa
+                            </div>
+
+                            <div class="method-description">
+                                Pay securely through Easypaisa payment gateway.
+                            </div>
+
+                        </div>
+
+                    </label>
+
+
+                    <div class="method-content">
+
+                        <div class="easypaisa-box">
+
+                            <h3>
+                                Easypaisa Payment Gateway
+                            </h3>
+
+                            <p>
+                                You will be redirected to the official
+                                Easypaisa payment gateway after your order
+                                is confirmed.
+                            </p>
+
+                            <div class="gateway-status">
+
+                                <span class="status-dot"></span>
+
+                                Gateway integration pending approval
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- BANK TRANSFER -->
+
+                <div class="method" id="bankMethod">
+
+                    <label class="method-header">
+
+                        <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="bank"
+                        >
+
+                        <div>
+
+                            <div class="method-name">
+                                Bank Transfer
+                            </div>
+
+                            <div class="method-description">
+                                Pay through direct bank transfer.
+                            </div>
+
+                        </div>
+
+                    </label>
+
+
+                    <div class="method-content">
+
+                        <div class="bank-details">
+
+                            <p>
+                                <strong>Bank:</strong>
+                                To be provided by VEXORIS
+                            </p>
+
+                            <p>
+                                <strong>Account Title:</strong>
+                                VEXORIS SOLUTIONS (PRIVATE) LIMITED
+                            </p>
+
+                            <p>
+                                <strong>Account Number:</strong>
+                                To be provided
+                            </p>
+
+                            <p>
+                                <strong>IBAN:</strong>
+                                To be provided
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MANUAL -->
+
+                <div class="method" id="manualMethod">
+
+                    <label class="method-header">
+
+                        <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="manual"
+                        >
+
+                        <div>
+
+                            <div class="method-name">
+                                Manual Payment
+                            </div>
+
+                            <div class="method-description">
+                                Contact VEXORIS for an alternative payment method.
+                            </div>
+
+                        </div>
+
+                    </label>
+
+
+                    <div class="method-content">
+
+                        <div class="bank-details">
+
+                            <p>
+                                Please contact VEXORIS if you require an
+                                alternative payment arrangement.
+                            </p>
+
+                            <p>
+                                <strong>Email:</strong>
+                                vexoris.info@gmail.com
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="pay-btn"
+                    id="payButton"
+                >
+                    Continue to Payment
+                </button>
+
+
+                <div class="security">
+
+                    🔒 <strong>Secure Payment</strong><br>
+
+                    Your order information is processed securely.
+                    VEXORIS does not collect or store your Easypaisa
+                    account PIN or password.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 VEXORIS SOLUTIONS (PRIVATE) LIMITED.
+        All rights reserved.
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+
+            /* =========================
+               GET ORDER
+            ========================== */
+
+            const order = JSON.parse(
+                localStorage.getItem("vexorisOrder")
+            );
+
+
+            if (!order) {
+
+                alert(
+                    "No active order was found. Please start again from the pricing page."
+                );
+
+                window.location.href = "index.html";
+
+                return;
+
+            }
+
+
+            /* =========================
+               DISPLAY ORDER
+            ========================== */
+
+            document.getElementById("serviceName").textContent =
+                order.serviceName || "VEXORIS Service";
+
+
+            document.getElementById("customerName").textContent =
+                order.customerName || "—";
+
+
+            document.getElementById("customerEmail").textContent =
+                order.email || "—";
+
+
+            document.getElementById("customerPhone").textContent =
+                order.phone || "—";
+
+
+            document.getElementById("orderReference").textContent =
+                order.reference || "—";
+
+
+            const totalPrice =
+                document.getElementById("totalPrice");
+
+
+            const customNote =
+                document.getElementById("customNote");
+
+
+            if (
+                order.price !== null &&
+                order.price !== undefined
+            ) {
+
+                totalPrice.textContent =
+                    "PKR " +
+                    Number(order.price).toLocaleString("en-PK");
+
+            } else {
+
+                totalPrice.textContent =
+                    "Custom Quote";
+
+                customNote.style.display = "block";
+
+            }
+
+
+
+            /* =========================
+               PAYMENT METHOD SWITCH
+            ========================== */
+
+            const methods =
+                document.querySelectorAll(
+                    'input[name="paymentMethod"]'
+                );
+
+
+            methods.forEach(function (radio) {
+
+                radio.addEventListener("change", function () {
+
+                    document
+                        .querySelectorAll(".method")
+                        .forEach(function (method) {
+
+                            method.classList.remove("active");
+
+                        });
+
+
+                    radio
+                        .closest(".method")
+                        .classList.add("active");
+
+                });
+
+            });
+
+
+
+            /* =========================
+               PAYMENT BUTTON
+            ========================== */
+
+            const payButton =
+                document.getElementById("payButton");
+
+
+            payButton.addEventListener("click", function () {
+
+
+                const selected =
+                    document.querySelector(
+                        'input[name="paymentMethod"]:checked'
+                    );
+
+
+                if (!selected) {
+
+                    alert(
+                        "Please select a payment method."
+                    );
+
+                    return;
+
+                }
+
+
+                /* =========================
+                   EASYPaisa
+                ========================== */
+
+                if (
+                    selected.value === "easypaisa"
+                ) {
+
+                    alert(
+                        "Easypaisa payment gateway integration is pending merchant approval and credentials."
+                    );
+
+                    return;
+
+                }
+
+
+                /* =========================
+                   BANK
+                ========================== */
+
+                if (
+                    selected.value === "bank"
+                ) {
+
+                    alert(
+                        "Bank transfer payment instructions will be provided by VEXORIS."
+                    );
+
+                    return;
+
+                }
+
+
+                /* =========================
+                   MANUAL
+                ========================== */
+
+                if (
+                    selected.value === "manual"
+                ) {
+
+                    alert(
+                        "Please contact VEXORIS at vexoris.info@gmail.com for payment arrangements."
+                    );
+
+                    return;
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
