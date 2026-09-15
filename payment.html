@@ -621,134 +621,128 @@
 
                 <!-- BANK TRANSFER -->
 
-                <div class="method" id="bankMethod">
+<div class="method" id="bankMethod">
 
-                    <label class="method-header">
+    <label class="method-header">
 
-                        <input
-                            type="radio"
-                            name="paymentMethod"
-                            value="bank"
-                        >
+        <input
+            type="radio"
+            name="paymentMethod"
+            value="bank"
+        >
 
-                        <div>
+        <div>
 
-                            <div class="method-name">
-                                Bank Transfer
-                            </div>
+            <div class="method-name">
+                Bank Transfer
+            </div>
 
-                            <div class="method-description">
-                                Pay through direct bank transfer.
-                            </div>
-
-                        </div>
-
-                    </label>
-
-
-                    <div class="method-content">
-
-                        <div class="bank-details">
-
-                            <p>
-                                <strong>Bank:</strong>
-                                To be provided by VEXORIS
-                            </p>
-
-                            <p>
-                                <strong>Account Title:</strong>
-                                VEXORIS SOLUTIONS (PRIVATE) LIMITED
-                            </p>
-
-                            <p>
-                                <strong>Account Number:</strong>
-                                To be provided
-                            </p>
-
-                            <p>
-                                <strong>IBAN:</strong>
-                                To be provided
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- MANUAL -->
-
-                <div class="method" id="manualMethod">
-
-                    <label class="method-header">
-
-                        <input
-                            type="radio"
-                            name="paymentMethod"
-                            value="manual"
-                        >
-
-                        <div>
-
-                            <div class="method-name">
-                                Manual Payment
-                            </div>
-
-                            <div class="method-description">
-                                Contact VEXORIS for an alternative payment method.
-                            </div>
-
-                        </div>
-
-                    </label>
-
-
-                    <div class="method-content">
-
-                        <div class="bank-details">
-
-                            <p>
-                                Please contact VEXORIS if you require an
-                                alternative payment arrangement.
-                            </p>
-
-                            <p>
-                                <strong>Email:</strong>
-                                vexoris.info@gmail.com
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <button
-                    type="button"
-                    class="pay-btn"
-                    id="payButton"
-                >
-                    Continue to Payment
-                </button>
-
-
-                <div class="security">
-
-                    🔒 <strong>Secure Payment</strong><br>
-
-                    Your order information is processed securely.
-                    VEXORIS does not collect or store your Easypaisa
-                    account PIN or password.
-
-                </div>
-
+            <div class="method-description">
+                Pay through direct bank transfer.
             </div>
 
         </div>
 
+    </label>
+
+
+    <div class="method-content">
+
+        <div class="bank-details">
+
+            <p>
+                <strong>Bank:</strong>
+                Soneri Bank Limited
+            </p>
+
+            <p>
+                <strong>Account Title:</strong>
+                VEXORIS SOLUTIONS (PRIVATE) LIMITED
+            </p>
+
+            <p>
+                <strong>Account Number:</strong>
+                050920018247454
+            </p>
+
+            <p>
+                <strong>IBAN:</strong>
+                PK25SONE0 050920018247454
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+               <!-- JAZZCASH -->
+
+<div class="method" id="jazzcashMethod">
+
+    <label class="method-header">
+
+        <input
+            type="radio"
+            name="paymentMethod"
+            value="jazzcash"
+        >
+
+        <div>
+
+            <div class="method-name">
+                JazzCash
+            </div>
+
+            <div class="method-description">
+                Gateway integration pending approval.
+            </div>
+
+        </div>
+
+    </label>
+
+
+    <div class="method-content">
+
+        <div class="bank-details">
+
+            <p>
+                JazzCash gateway integration is currently
+                <strong>pending approval</strong>.
+            </p>
+
+            <p>
+                Online payment through JazzCash will be
+                available after merchant approval and
+                integration credentials are provided.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<button
+    type="button"
+    class="pay-btn"
+    id="payButton"
+>
+    Continue to Payment
+</button>
+
+
+<div class="security">
+
+    🔒 <strong>Secure Payment</strong><br>
+
+    Your order information is processed securely.
+    VEXORIS does not collect or store your Easypaisa
+    or JazzCash account PIN or password.
+
+</div>
     </main>
 
 
@@ -947,17 +941,16 @@ document.getElementById("customerPhone").textContent =
                 ========================== */
 
                 if (
-                    selected.value === "manual"
-                ) {
+    selected.value === "jazzcash"
+) {
 
-                    alert(
-                        "Please contact VEXORIS at vexoris.info@gmail.com for payment arrangements."
-                    );
+    alert(
+        "JazzCash payment gateway integration is pending approval and credentials."
+    );
 
-                    return;
+    return;
 
-                }
-
+}
             });
 
         });
