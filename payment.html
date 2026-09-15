@@ -619,144 +619,104 @@
 
 
 
-                <!-- BANK TRANSFER -->
+                /* =========================
+                       BANK TRANSFER
+                   ========================= */
 
-<div class="method" id="bankMethod">
+if (
+    selected.value === "bank"
+) {
 
-    <label class="method-header">
+    const customerName =
+        document.getElementById("paymentCustomerName").value.trim();
 
-        <input
-            type="radio"
-            name="paymentMethod"
-            value="bank"
-        >
+    const accountNumber =
+        document.getElementById("paymentAccountNumber").value.trim();
 
-        <div>
+    const transactionId =
+        document.getElementById("transactionId").value.trim();
 
-            <div class="method-name">
-                Bank Transfer
-            </div>
-
-            <div class="method-description">
-                Pay through direct bank transfer.
-            </div>
-
-        </div>
-
-    </label>
+    const screenshot =
+        document.getElementById("paymentScreenshot").files[0];
 
 
-    <div class="method-content">
+    if (!customerName) {
 
-        <div class="bank-details">
+        alert("Please enter your name.");
 
-            <p>
-                <strong>Bank:</strong>
-                Soneri Bank Limited
-            </p>
+        return;
 
-            <p>
-                <strong>Account Title:</strong>
-                VEXORIS SOLUTIONS (PRIVATE) LIMITED
-            </p>
-
-            <p>
-                <strong>Account Number:</strong>
-                050920018247454
-            </p>
-
-            <p>
-                <strong>IBAN:</strong>
-                PK25SONE0050920018247454
-            </p>
-
-        </div>
+    }
 
 
-        <!-- PAYMENT CONFIRMATION -->
+    if (!accountNumber) {
 
-        <div class="payment-confirmation">
+        alert("Please enter the account number used for payment.");
 
-            <h3>Payment Confirmation</h3>
+        return;
 
-            <p>
-                After completing the bank transfer, please provide
-                your payment details below.
-            </p>
+    }
 
 
-            <div class="form-group">
+    if (!transactionId) {
 
-                <label for="paymentCustomerName">
-                    Customer Name
-                </label>
+        alert("Please enter your Transaction ID / TRX ID.");
 
-                <input
-                    type="text"
-                    id="paymentCustomerName"
-                    placeholder="Enter your full name"
-                    required
-                >
+        return;
 
-            </div>
+    }
 
 
-            <div class="form-group">
+    if (!screenshot) {
 
-                <label for="paymentAccountNumber">
-                    Account Number
-                </label>
+        alert("Please upload your payment screenshot.");
 
-                <input
-                    type="text"
-                    id="paymentAccountNumber"
-                    placeholder="Enter the account number used for payment"
-                    required
-                >
+        return;
 
-            </div>
+    }
 
 
-            <div class="form-group">
+    /* =========================
+       SAVE PAYMENT INFORMATION
+    ========================== */
 
-                <label for="transactionId">
-                    Transaction ID / TRX ID
-                </label>
+    order.payment = {
 
-                <input
-                    type="text"
-                    id="transactionId"
-                    placeholder="Enter your transaction ID"
-                    required
-                >
+        method: "bank",
 
-            </div>
+        customerName: customerName,
+
+        accountNumber: accountNumber,
+
+        transactionId: transactionId,
+
+        screenshotName: screenshot.name,
+
+        submittedAt: new Date().toISOString()
+
+    };
 
 
-            <div class="form-group">
+    order.paymentStatus =
+        "verification_pending";
 
-                <label for="paymentScreenshot">
-                    Payment Screenshot
-                </label>
 
-                <input
-                    type="file"
-                    id="paymentScreenshot"
-                    accept="image/*"
-                    required
-                >
+    localStorage.setItem(
+        "vexorisOrder",
+        JSON.stringify(order)
+    );
 
-                <small>
-                    Upload a clear screenshot showing your payment transaction.
-                </small>
 
-            </div>
+    /* =========================
+       GO TO THANK YOU PAGE
+    ========================== */
 
-        </div>
+    window.location.href =
+        "thank-you.html";
 
-    </div>
+    return;
 
-</div>
+}
 
                <!-- JAZZCASH -->
 
