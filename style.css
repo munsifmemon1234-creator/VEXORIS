@@ -1636,3 +1636,265 @@ height:30px;
 }
 
 }
+
+
+/* =====================================
+   VEXORIS SERVICES & PRICING
+   Premium Service Cards
+===================================== */
+
+.services{
+    background:#f8fafc;
+}
+
+.services .section-subtitle{
+    max-width:760px;
+    margin:0 auto;
+    text-align:center;
+    color:#64748b;
+    font-size:17px;
+    line-height:1.8;
+}
+
+/* Service Grid */
+
+.services .service-container{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+    margin-top:55px;
+}
+
+/* Service Card */
+
+.services .card{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    background:#ffffff;
+    padding:38px 32px 32px;
+    border-radius:20px;
+    border:1px solid #e2e8f0;
+    box-shadow:0 10px 30px rgba(15,23,42,.07);
+    min-height:390px;
+    overflow:hidden;
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+}
+
+/* Premium top line */
+
+.services .card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:4px;
+    background:linear-gradient(
+        90deg,
+        #0A66C2,
+        #38bdf8
+    );
+    transform:scaleX(.35);
+    transform-origin:left;
+    transition:.35s ease;
+}
+
+.services .card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(10,102,194,.25);
+    box-shadow:0 20px 45px rgba(10,102,194,.13);
+}
+
+.services .card:hover::before{
+    transform:scaleX(1);
+}
+
+/* Service Title */
+
+.services .card h3{
+    color:#0A66C2;
+    font-size:23px;
+    font-weight:700;
+    line-height:1.45;
+    margin:0 0 18px;
+}
+
+/* Service Description */
+
+.services .card p{
+    color:#64748b;
+    font-size:15.5px;
+    line-height:1.8;
+    margin:0;
+}
+
+/* Price */
+
+.services .card h4{
+    margin-top:auto;
+    padding-top:28px;
+    margin-bottom:22px;
+
+    color:#0f172a;
+    font-size:20px;
+    font-weight:700;
+    line-height:1.4;
+}
+
+/* Price Accent */
+
+.services .card h4::first-line{
+    color:#0f172a;
+}
+
+/* CTA Button */
+
+.services .service-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+
+    min-height:50px;
+    padding:13px 22px;
+
+    background:#0A66C2;
+    color:#ffffff;
+
+    border:1px solid #0A66C2;
+    border-radius:10px;
+
+    text-decoration:none;
+    text-align:center;
+
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:.2px;
+
+    box-shadow:0 8px 20px rgba(10,102,194,.20);
+
+    transition:
+        background .3s ease,
+        border-color .3s ease,
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.services .service-btn::after{
+    content:" →";
+    margin-left:6px;
+    transition:transform .3s ease;
+}
+
+.services .service-btn:hover{
+    background:#0f172a;
+    border-color:#0f172a;
+    color:#ffffff;
+    transform:translateY(-2px);
+    box-shadow:0 12px 25px rgba(15,23,42,.20);
+}
+
+.services .service-btn:hover::after{
+    transform:translateX(4px);
+}
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media(max-width:1000px){
+
+    .services .service-container{
+        grid-template-columns:repeat(2,1fr);
+        gap:25px;
+    }
+
+    .services .card{
+        min-height:380px;
+    }
+
+}
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:768px){
+
+    .services{
+        padding:80px 6%;
+    }
+
+    .services .section-subtitle{
+        font-size:15.5px;
+        line-height:1.75;
+    }
+
+    .services .service-container{
+        grid-template-columns:1fr;
+        gap:22px;
+        margin-top:40px;
+    }
+
+    .services .card{
+        min-height:auto;
+        padding:30px 25px 25px;
+        border-radius:18px;
+    }
+
+    .services .card h3{
+        font-size:23px;
+        line-height:1.45;
+        margin-bottom:15px;
+    }
+
+    .services .card p{
+        font-size:15px;
+        line-height:1.75;
+    }
+
+    .services .card h4{
+        padding-top:25px;
+        margin-bottom:18px;
+        font-size:19px;
+    }
+
+    .services .service-btn{
+        min-height:50px;
+        font-size:15px;
+    }
+
+}
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media(max-width:420px){
+
+    .services{
+        padding-left:5%;
+        padding-right:5%;
+    }
+
+    .services .card{
+        padding:28px 22px 23px;
+    }
+
+    .services .card h3{
+        font-size:21px;
+    }
+
+    .services .card p{
+        font-size:14.5px;
+    }
+
+    .services .card h4{
+        font-size:18px;
+    }
+
+}
