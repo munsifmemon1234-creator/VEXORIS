@@ -1202,187 +1202,616 @@
 
 
 
-    <!-- =========================================
-         JAVASCRIPT
-         ========================================= -->
+  <!-- =========================================
+     JAVASCRIPT
+     ========================================= -->
 
-    <script>
+ <script>
 
-        /*
-        ============================================
-        VEXORIS SERVICE DATA
-        ============================================
-        */
+    /*
+    ============================================
+    VEXORIS SERVICE DATA
+    ============================================
+    */
 
-        const services = {
+    const services = {
 
-            "software-development": {
-                name: "Software Development",
-                price: null,
-                type: "project",
-                description:
-                    "Development of custom software and web-based systems designed around specific business processes and operational requirements."
-            },
+        "software-development": {
+            name: "Software Development",
+            price: null,
+            type: "project",
+            description:
+                "Development of custom software and web-based systems designed around specific business processes and operational requirements."
+        },
 
-            "business": {
-                name: "Web Development",
-                price: 20000,
-                type: "starting",
-                description:
-                    "Professional websites and web applications designed for businesses, organizations, professionals, and digital projects."
-            },
+        "business": {
+            name: "Web Development",
+            price: 20000,
+            type: "starting",
+            description:
+                "Professional websites and web applications designed for businesses, organizations, professionals, and digital projects."
+        },
 
-            "web-applications": {
-                name: "Web Applications",
-                price: null,
-                type: "project",
-                description:
-                    "Browser-based applications developed to support internal workflows, business operations, dashboards, and specialized requirements."
-            },
+        "web-applications": {
+            name: "Web Applications",
+            price: null,
+            type: "project",
+            description:
+                "Browser-based applications developed to support internal workflows, business operations, dashboards, and specialized requirements."
+        },
 
-            "system-engineering": {
-                name: "System Engineering",
-                price: null,
-                type: "project",
-                description:
-                    "Technical planning, implementation, configuration, testing, and optimization of software-based systems."
-            },
+        "system-engineering": {
+            name: "System Engineering",
+            price: null,
+            type: "project",
+            description:
+                "Technical planning, implementation, configuration, testing, and optimization of software-based systems."
+        },
 
-            "system-integration": {
-                name: "System Integration",
-                price: null,
-                type: "project",
-                description:
-                    "Connecting software systems and platforms to support required business workflows and technical processes."
-            },
+        "system-integration": {
+            name: "System Integration",
+            price: null,
+            type: "project",
+            description:
+                "Connecting software systems and platforms to support required business workflows and technical processes."
+        },
 
-            "technical-operations": {
-                name: "Technical Operations",
-                price: null,
-                type: "project",
-                description:
-                    "Technical configuration, deployment assistance, monitoring, troubleshooting, maintenance, and operational support."
-            },
+        "technical-operations": {
+            name: "Technical Operations",
+            price: null,
+            type: "project",
+            description:
+                "Technical configuration, deployment assistance, monitoring, troubleshooting, maintenance, and operational support."
+        },
 
-            "ui-ux": {
-                name: "UI / UX Design",
-                price: 10000,
-                type: "starting",
-                description:
-                    "Clean and practical interfaces designed to make software and websites easier to understand and use."
-            },
+        "ui-ux": {
+            name: "UI / UX Design",
+            price: 10000,
+            type: "starting",
+            description:
+                "Clean and practical interfaces designed to make software and websites easier to understand and use."
+        },
 
-            "maintenance": {
-                name: "Website Maintenance",
-                price: 5000,
-                type: "monthly",
-                description:
-                    "Ongoing updates, technical maintenance, performance improvements, troubleshooting, and website support."
-            },
+        "maintenance": {
+            name: "Website Maintenance",
+            price: 5000,
+            type: "monthly",
+            description:
+                "Ongoing updates, technical maintenance, performance improvements, troubleshooting, and website support."
+        },
 
-            "system-testing": {
-                name: "System Testing",
-                price: null,
-                type: "project",
-                description:
-                    "Functional testing, troubleshooting, integration testing, and technical verification before deployment."
-            },
+        "system-testing": {
+            name: "System Testing",
+            price: null,
+            type: "project",
+            description:
+                "Functional testing, troubleshooting, integration testing, and technical verification before deployment."
+        },
 
-            "consulting": {
-                name: "IT Consulting",
-                price: null,
-                type: "quote",
-                description:
-                    "Practical technology guidance covering software, systems, infrastructure planning, and technical decision-making."
+        "consulting": {
+            name: "IT Consulting",
+            price: null,
+            type: "quote",
+            description:
+                "Practical technology guidance covering software, systems, infrastructure planning, and technical decision-making."
+        }
+
+    };
+
+
+    /*
+    ============================================
+    ELEMENTS
+    ============================================
+    */
+
+    const serviceSelect =
+        document.getElementById("service");
+
+    const serviceMessage =
+        document.getElementById("serviceMessage");
+
+    const serviceMessageName =
+        document.getElementById("serviceMessageName");
+
+    const summaryService =
+        document.getElementById("summaryService");
+
+    const summaryServiceSmall =
+        document.getElementById("summaryServiceSmall");
+
+    const summaryDescription =
+        document.getElementById("summaryDescription");
+
+    const summaryAmount =
+        document.getElementById("summaryAmount");
+
+    const totalAmount =
+        document.getElementById("totalAmount");
+
+    const summaryCustomer =
+        document.getElementById("summaryCustomer");
+
+    const quoteNotice =
+        document.getElementById("quoteNotice");
+
+    const fullName =
+        document.getElementById("fullName");
+
+    const email =
+        document.getElementById("email");
+
+    const phone =
+        document.getElementById("phone");
+
+    const requirements =
+        document.getElementById("requirements");
+
+    const terms =
+        document.getElementById("terms");
+
+    const checkoutForm =
+        document.getElementById("checkoutForm");
+
+
+    /*
+    ============================================
+    FORMAT PRICE
+    ============================================
+    */
+
+    function formatPrice(price, type) {
+
+        if (type === "project") {
+            return "Project Quote";
+        }
+
+        if (type === "quote") {
+            return "Custom Quote";
+        }
+
+        if (type === "monthly") {
+            return "PKR " +
+                price.toLocaleString("en-PK") +
+                " / Month";
+        }
+
+        if (type === "starting") {
+            return "From PKR " +
+                price.toLocaleString("en-PK");
+        }
+
+        return "—";
+    }
+
+
+    /*
+    ============================================
+    UPDATE SERVICE SUMMARY
+    ============================================
+    */
+
+    function updateService() {
+
+        const selected =
+            services[serviceSelect.value];
+
+
+        if (!selected) {
+
+            summaryService.textContent =
+                "Not selected";
+
+            summaryServiceSmall.textContent =
+                "—";
+
+            summaryDescription.textContent =
+                "Select a service to view its details.";
+
+            summaryAmount.textContent =
+                "—";
+
+            totalAmount.textContent =
+                "—";
+
+            serviceMessage.style.display =
+                "none";
+
+            quoteNotice.style.display =
+                "none";
+
+            return;
+        }
+
+
+        summaryService.textContent =
+            selected.name;
+
+        summaryServiceSmall.textContent =
+            selected.name;
+
+        summaryDescription.textContent =
+            selected.description;
+
+        summaryAmount.textContent =
+            formatPrice(
+                selected.price,
+                selected.type
+            );
+
+        totalAmount.textContent =
+            formatPrice(
+                selected.price,
+                selected.type
+            );
+
+
+        serviceMessageName.textContent =
+            selected.name;
+
+        serviceMessage.style.display =
+            "block";
+
+
+        if (
+            selected.type === "project" ||
+            selected.type === "quote"
+        ) {
+
+            quoteNotice.style.display =
+                "block";
+
+        } else {
+
+            quoteNotice.style.display =
+                "none";
+
+        }
+
+    }
+
+
+    /*
+    ============================================
+    GENERATE REQUEST REFERENCE
+    ============================================
+    */
+
+    function generateReference() {
+
+        return "VEX-" +
+            Math.random()
+                .toString(36)
+                .substring(2, 10)
+                .toUpperCase();
+
+    }
+
+
+    /*
+    ============================================
+    LOAD EXISTING ORDER
+    ============================================
+    */
+
+    let savedOrder = null;
+
+    try {
+
+        const storedOrder =
+            localStorage.getItem("vexorisOrder");
+
+        if (storedOrder) {
+
+            savedOrder =
+                JSON.parse(storedOrder);
+
+        }
+
+    } catch (error) {
+
+        console.warn(
+            "Unable to read saved order.",
+            error
+        );
+
+    }
+
+
+    /*
+    ============================================
+    READ SERVICE FROM HOMEPAGE
+    ============================================
+    */
+
+    const urlParams =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const requestedService =
+        urlParams.get("service");
+
+
+    /*
+    ============================================
+    RESTORE PREVIOUS CHECKOUT DATA
+    ============================================
+    */
+
+    if (
+        savedOrder &&
+        savedOrder.customer
+    ) {
+
+        fullName.value =
+            savedOrder.customer.name || "";
+
+        email.value =
+            savedOrder.customer.email || "";
+
+        phone.value =
+            savedOrder.customer.phone || "";
+
+    }
+
+
+    if (savedOrder) {
+
+        requirements.value =
+            savedOrder.requirements || "";
+
+    }
+
+
+    /*
+    ============================================
+    SERVICE PRIORITY
+    ============================================
+
+    1. If the customer is coming from
+       the homepage with a service selected,
+       use that service.
+
+    2. Otherwise, restore the previously
+       selected service from localStorage.
+    ============================================
+    */
+
+    if (
+        requestedService &&
+        services[requestedService]
+    ) {
+
+        serviceSelect.value =
+            requestedService;
+
+    } else if (
+        savedOrder &&
+        savedOrder.service &&
+        services[savedOrder.service.id]
+    ) {
+
+        serviceSelect.value =
+            savedOrder.service.id;
+
+    }
+
+
+    /*
+    ============================================
+    INITIAL UPDATE
+    ============================================
+    */
+
+    updateService();
+
+
+    /*
+    ============================================
+    UPDATE CUSTOMER SUMMARY
+    ============================================
+    */
+
+    function updateCustomerSummary() {
+
+        summaryCustomer.textContent =
+            fullName.value.trim() || "—";
+
+    }
+
+
+    updateCustomerSummary();
+
+
+    /*
+    ============================================
+    SAVE CHECKOUT PROGRESS
+    ============================================
+
+    This saves the customer's information
+    before they click Continue.
+
+    Therefore, if they go to Payment and
+    press Back, their information remains.
+    ============================================
+    */
+
+    function saveCheckoutProgress() {
+
+        const selected =
+            services[serviceSelect.value];
+
+
+        let currentOrder = null;
+
+
+        try {
+
+            const existing =
+                localStorage.getItem(
+                    "vexorisOrder"
+                );
+
+            if (existing) {
+
+                currentOrder =
+                    JSON.parse(existing);
+
             }
+
+        } catch (error) {
+
+            currentOrder = null;
+
+        }
+
+
+        if (!currentOrder) {
+
+            currentOrder = {
+
+                reference:
+                    generateReference(),
+
+                status:
+                    "checkout-in-progress"
+
+            };
+
+        }
+
+
+        currentOrder.customer = {
+
+            name:
+                fullName.value.trim(),
+
+            email:
+                email.value.trim(),
+
+            phone:
+                phone.value.trim()
 
         };
 
 
+        currentOrder.service = {
 
-        /*
-        ============================================
-        ELEMENTS
-        ============================================
-        */
+            id:
+                serviceSelect.value || "",
 
-        const serviceSelect =
-            document.getElementById("service");
+            name:
+                selected
+                    ? selected.name
+                    : "",
 
-        const serviceMessage =
-            document.getElementById("serviceMessage");
+            price:
+                selected
+                    ? selected.price
+                    : null,
 
-        const serviceMessageName =
-            document.getElementById("serviceMessageName");
+            pricingType:
+                selected
+                    ? selected.type
+                    : ""
 
-        const summaryService =
-            document.getElementById("summaryService");
-
-        const summaryServiceSmall =
-            document.getElementById("summaryServiceSmall");
-
-        const summaryDescription =
-            document.getElementById("summaryDescription");
-
-        const summaryAmount =
-            document.getElementById("summaryAmount");
-
-        const totalAmount =
-            document.getElementById("totalAmount");
-
-        const summaryCustomer =
-            document.getElementById("summaryCustomer");
-
-        const quoteNotice =
-            document.getElementById("quoteNotice");
-
-        const fullName =
-            document.getElementById("fullName");
-
-        const checkoutForm =
-            document.getElementById("checkoutForm");
+        };
 
 
+        currentOrder.requirements =
+            requirements.value.trim();
 
-        /*
-        ============================================
-        FORMAT PRICE
-        ============================================
-        */
 
-        function formatPrice(price, type) {
+        currentOrder.checkoutUpdatedAt =
+            new Date().toISOString();
 
-            if (type === "project") {
-                return "Project Quote";
-            }
 
-            if (type === "quote") {
-                return "Custom Quote";
-            }
+        localStorage.setItem(
+            "vexorisOrder",
+            JSON.stringify(currentOrder)
+        );
 
-            if (type === "monthly") {
-                return "PKR " +
-                    price.toLocaleString("en-PK") +
-                    " / Month";
-            }
+    }
 
-            if (type === "starting") {
-                return "From PKR " +
-                    price.toLocaleString("en-PK");
-            }
 
-            return "—";
+    /*
+    ============================================
+    SAVE WHILE CUSTOMER TYPES
+    ============================================
+    */
+
+    fullName.addEventListener(
+        "input",
+        function () {
+
+            updateCustomerSummary();
+            saveCheckoutProgress();
+
         }
+    );
 
 
+    email.addEventListener(
+        "input",
+        saveCheckoutProgress
+    );
 
-        /*
-        ============================================
-        UPDATE SERVICE
-        ============================================
-        */
 
-        function updateService() {
+    phone.addEventListener(
+        "input",
+        saveCheckoutProgress
+    );
+
+
+    requirements.addEventListener(
+        "input",
+        saveCheckoutProgress
+    );
+
+
+    /*
+    ============================================
+    SERVICE CHANGE
+    ============================================
+    */
+
+    serviceSelect.addEventListener(
+        "change",
+        function () {
+
+            updateService();
+
+            saveCheckoutProgress();
+
+        }
+    );
+
+
+    /*
+    ============================================
+    TERMS CHECKBOX
+    ============================================
+    */
+
+    terms.addEventListener(
+        "change",
+        saveCheckoutProgress
+    );
+
+
+    /*
+    ============================================
+    SUBMIT
+    ============================================
+    */
+
+    checkoutForm.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
 
             const selected =
                 services[serviceSelect.value];
@@ -1390,281 +1819,165 @@
 
             if (!selected) {
 
-                summaryService.textContent =
-                    "Not selected";
+                alert(
+                    "Please select a service."
+                );
 
-                summaryServiceSmall.textContent =
-                    "—";
-
-                summaryDescription.textContent =
-                    "Select a service to view its details.";
-
-                summaryAmount.textContent =
-                    "—";
-
-                totalAmount.textContent =
-                    "—";
-
-                serviceMessage.style.display =
-                    "none";
-
-                quoteNotice.style.display =
-                    "none";
+                serviceSelect.focus();
 
                 return;
+
             }
-
-
-            summaryService.textContent =
-                selected.name;
-
-            summaryServiceSmall.textContent =
-                selected.name;
-
-            summaryDescription.textContent =
-                selected.description;
-
-            summaryAmount.textContent =
-                formatPrice(
-                    selected.price,
-                    selected.type
-                );
-
-            totalAmount.textContent =
-                formatPrice(
-                    selected.price,
-                    selected.type
-                );
-
-
-            serviceMessageName.textContent =
-                selected.name;
-
-            serviceMessage.style.display =
-                "block";
 
 
             /*
-            Show quotation notice only
-            where a fixed price does not exist.
+            ========================================
+            LOAD EXISTING ORDER
+            ========================================
             */
 
-            if (
-                selected.type === "project" ||
-                selected.type === "quote"
-            ) {
-
-                quoteNotice.style.display =
-                    "block";
-
-            } else {
-
-                quoteNotice.style.display =
-                    "none";
-
-            }
-
-        }
+            let request = null;
 
 
+            try {
 
-        /*
-        ============================================
-        READ SERVICE FROM HOMEPAGE
-        ============================================
-        */
-
-        const urlParams =
-            new URLSearchParams(
-                window.location.search
-            );
-
-        const requestedService =
-            urlParams.get("service");
-
-
-        if (
-            requestedService &&
-            services[requestedService]
-        ) {
-
-            serviceSelect.value =
-                requestedService;
-
-        }
-
-
-
-        /*
-        ============================================
-        INITIAL UPDATE
-        ============================================
-        */
-
-        updateService();
-
-
-
-        /*
-        ============================================
-        SERVICE CHANGE
-        ============================================
-        */
-
-        serviceSelect.addEventListener(
-            "change",
-            updateService
-        );
-
-
-
-        /*
-        ============================================
-        CUSTOMER NAME
-        ============================================
-        */
-
-        fullName.addEventListener(
-            "input",
-            function () {
-
-                summaryCustomer.textContent =
-                    this.value.trim() || "—";
-
-            }
-        );
-
-
-
-        /*
-        ============================================
-        SUBMIT
-        ============================================
-        */
-
-        checkoutForm.addEventListener(
-            "submit",
-            function (event) {
-
-                event.preventDefault();
-
-
-                const selected =
-                    services[serviceSelect.value];
-
-
-                if (!selected) {
-
-                    alert(
-                        "Please select a service."
+                const existing =
+                    localStorage.getItem(
+                        "vexorisOrder"
                     );
 
-                    serviceSelect.focus();
+                if (existing) {
 
-                    return;
+                    request =
+                        JSON.parse(existing);
 
                 }
 
+            } catch (error) {
 
-                /*
-                Generate request reference.
-                */
+                request = null;
 
-                const requestReference =
-                    "VEX-" +
-                    Math.random()
-                        .toString(36)
-                        .substring(2, 10)
-                        .toUpperCase();
+            }
 
 
-                /*
-                Create request object.
-                */
+            /*
+            ========================================
+            KEEP EXISTING REFERENCE
+            ========================================
+            */
 
-                const request = {
+            if (!request) {
+
+                request = {
 
                     reference:
-                        requestReference,
-
-                    customer: {
-
-                        name:
-                            document
-                                .getElementById("fullName")
-                                .value
-                                .trim(),
-
-                        email:
-                            document
-                                .getElementById("email")
-                                .value
-                                .trim(),
-
-                        phone:
-                            document
-                                .getElementById("phone")
-                                .value
-                                .trim()
-
-                    },
-
-                    service: {
-
-                        id:
-                            serviceSelect.value,
-
-                        name:
-                            selected.name,
-
-                        price:
-                            selected.price,
-
-                        pricingType:
-                            selected.type
-
-                    },
-
-                    requirements:
-                        document
-                            .getElementById("requirements")
-                            .value
-                            .trim(),
-
-                    createdAt:
-                        new Date().toISOString(),
-
-                    status:
-                        "request-submitted"
+                        generateReference()
 
                 };
 
-
-                /*
-                Temporary browser storage.
-
-                The production version should
-                create the request through your
-                backend/database.
-                */
-
-                localStorage.setItem(
-                    "vexorisOrder",
-                    JSON.stringify(request)
-                );
+            }
 
 
-                /*
-                Continue to the next step.
-                */
+            /*
+            ========================================
+            UPDATE ORDER
+            ========================================
+            */
 
-                window.location.href =
-                    "payment.html";
+            request.customer = {
+
+                name:
+                    fullName.value.trim(),
+
+                email:
+                    email.value.trim(),
+
+                phone:
+                    phone.value.trim()
+
+            };
+
+
+            request.service = {
+
+                id:
+                    serviceSelect.value,
+
+                name:
+                    selected.name,
+
+                price:
+                    selected.price,
+
+                pricingType:
+                    selected.type
+
+            };
+
+
+            request.requirements =
+                requirements.value.trim();
+
+
+            /*
+            Keep the original creation time
+            if the order already exists.
+            */
+
+            if (!request.createdAt) {
+
+                request.createdAt =
+                    new Date().toISOString();
 
             }
-        );
 
-    </script>
 
-</body>
-</html>
+            request.status =
+                "request-submitted";
+
+
+            request.checkoutUpdatedAt =
+                new Date().toISOString();
+
+
+            /*
+            ========================================
+            SAVE FINAL CHECKOUT DATA
+            ========================================
+            */
+
+            localStorage.setItem(
+                "vexorisOrder",
+                JSON.stringify(request)
+            );
+
+
+            /*
+            ========================================
+            CONTINUE TO PAYMENT
+            ========================================
+            */
+
+            window.location.href =
+                "payment.html";
+
+        }
+    );
+
+
+    /*
+    ============================================
+    SAVE BEFORE LEAVING PAGE
+    ============================================
+    */
+
+    window.addEventListener(
+        "beforeunload",
+        function () {
+
+            saveCheckoutProgress();
+
+        }
+    );
+
+</script>
