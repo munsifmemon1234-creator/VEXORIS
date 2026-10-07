@@ -8,7 +8,7 @@
 
     <meta
         name="description"
-        content="Payment and order confirmation for VEXORIS SOLUTIONS (PRIVATE) LIMITED services."
+        content="Payment and service order confirmation for VEXORIS SOLUTIONS (PRIVATE) LIMITED."
     >
 
     <link
@@ -133,7 +133,7 @@
         }
 
         /* =========================
-           ORDER SUMMARY
+           SERVICE SUMMARY
         ========================= */
 
         .service-name {
@@ -167,29 +167,56 @@
             word-break: break-word;
         }
 
-        .total-box {
-            margin-top: 22px;
-            padding: 18px;
-            background: #08111f;
-            border-radius: 14px;
-            color: white;
+        /* =========================
+           PAYMENT SUMMARY
+        ========================= */
+
+        .payment-summary {
+            margin-top: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .payment-summary-row {
             display: flex;
             justify-content: space-between;
-            align-items: center;
             gap: 15px;
+            padding: 13px 15px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 13px;
         }
 
-        .total-box span:first-child {
-            color: #cbd5e1;
-            font-size: 14px;
+        .payment-summary-row:last-child {
+            border-bottom: none;
         }
 
-        .total-price {
-            font-size: 21px;
-            font-weight: 700;
-            color: #38bdf8;
+        .payment-summary-label {
+            color: #64748b;
+        }
+
+        .payment-summary-value {
+            color: #0f172a;
+            font-weight: 600;
             text-align: right;
         }
+
+        .payment-summary-row.advance {
+            background: #08111f;
+        }
+
+        .payment-summary-row.advance .payment-summary-label {
+            color: #cbd5e1;
+        }
+
+        .payment-summary-row.advance .payment-summary-value {
+            color: #38bdf8;
+            font-size: 16px;
+        }
+
+        /* =========================
+           PROJECT NOTE
+        ========================= */
 
         .custom-note {
             margin-top: 18px;
@@ -200,6 +227,10 @@
             font-size: 13px;
             line-height: 1.7;
         }
+
+        /* =========================
+           REQUIREMENTS
+        ========================= */
 
         .requirements-box {
             margin-top: 20px;
@@ -280,6 +311,26 @@
         }
 
         /* =========================
+           PAYMENT INSTRUCTIONS
+        ========================= */
+
+        .payment-instructions {
+            margin-bottom: 20px;
+        }
+
+        .payment-instructions h3 {
+            font-size: 15px;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .payment-instructions p {
+            color: #64748b;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        /* =========================
            BANK DETAILS
         ========================= */
 
@@ -302,27 +353,7 @@
         }
 
         /* =========================
-           PAYMENT INSTRUCTIONS
-        ========================= */
-
-        .payment-instructions {
-            margin-bottom: 20px;
-        }
-
-        .payment-instructions h3 {
-            font-size: 15px;
-            color: #0f172a;
-            margin-bottom: 8px;
-        }
-
-        .payment-instructions p {
-            color: #64748b;
-            font-size: 13px;
-            line-height: 1.7;
-        }
-
-        /* =========================
-           FORM
+           PAYMENT CONFIRMATION
         ========================= */
 
         .payment-confirmation {
@@ -341,6 +372,10 @@
             line-height: 1.6;
             margin-bottom: 18px;
         }
+
+        /* =========================
+           FORM
+        ========================= */
 
         .form-group {
             margin-bottom: 15px;
@@ -417,30 +452,7 @@
         }
 
         /* =========================
-           QUOTE STATE
-        ========================= */
-
-        .quote-state {
-            padding: 18px;
-            border-radius: 12px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-        }
-
-        .quote-state h3 {
-            color: #0f172a;
-            font-size: 15px;
-            margin-bottom: 7px;
-        }
-
-        .quote-state p {
-            color: #64748b;
-            font-size: 13px;
-            line-height: 1.7;
-        }
-
-        /* =========================
-           STATUS MESSAGE
+           STATUS
         ========================= */
 
         .status-message {
@@ -455,7 +467,7 @@
         }
 
         /* =========================
-           SECURITY / INFORMATION
+           INFORMATION
         ========================= */
 
         .security {
@@ -533,18 +545,17 @@
                 font-size: 13px;
             }
 
-            .total-price {
-                font-size: 18px;
-            }
-
-            .summary-row {
+            .summary-row,
+            .payment-summary-row {
                 flex-direction: column;
                 gap: 4px;
             }
 
-            .summary-value {
+            .summary-value,
+            .payment-summary-value {
                 text-align: left;
             }
+
         }
 
     </style>
@@ -578,7 +589,7 @@
 
 
     <!-- =========================
-         PAYMENT PAGE
+         MAIN
     ========================== -->
 
     <main class="payment-wrapper">
@@ -598,7 +609,7 @@
 
 
             <!-- =========================
-                 ORDER SUMMARY
+                 SERVICE DETAILS
             ========================== -->
 
             <div class="card">
@@ -606,6 +617,7 @@
                 <div class="card-title">
                     Service Details
                 </div>
+
 
                 <div
                     class="service-name"
@@ -679,36 +691,104 @@
                 </div>
 
 
-                <div class="total-box">
+                <!-- =========================
+                     PAYMENT BREAKDOWN
+                ========================== -->
 
-                    <span>
-                        Amount
-                    </span>
+                <div class="payment-summary">
 
-                    <span
-                        class="total-price"
-                        id="totalPrice"
+                    <div class="payment-summary-row">
+
+                        <span class="payment-summary-label">
+                            Service Amount
+                        </span>
+
+                        <span
+                            class="payment-summary-value"
+                            id="serviceAmount"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="payment-summary-row"
+                        id="advanceRow"
+                        style="display: none;"
                     >
-                        —
-                    </span>
+
+                        <span class="payment-summary-label">
+                            Advance Payment
+                        </span>
+
+                        <span
+                            class="payment-summary-value"
+                            id="advanceAmount"
+                        >
+                            PKR 5,000
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="payment-summary-row"
+                        id="remainingRow"
+                    >
+
+                        <span class="payment-summary-label">
+                            Remaining Balance
+                        </span>
+
+                        <span
+                            class="payment-summary-value"
+                            id="remainingAmount"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <div class="payment-summary-row advance">
+
+                        <span class="payment-summary-label">
+                            Amount Payable Now
+                        </span>
+
+                        <span
+                            class="payment-summary-value"
+                            id="payableAmount"
+                        >
+                            —
+                        </span>
+
+                    </div>
 
                 </div>
 
 
-                <!-- CUSTOM QUOTE MESSAGE -->
+                <!-- =========================
+                     CUSTOM PROJECT NOTE
+                ========================== -->
 
                 <div
                     class="custom-note"
                     id="customNote"
                     style="display: none;"
                 >
-                    This service is quoted according to your project
-                    requirements. VEXORIS will review your request and
-                    confirm the final project amount before payment.
+                    This is a project-based service. A PKR 5,000 advance
+                    is required to begin the project process. The final
+                    project quotation and remaining balance will be
+                    confirmed according to the agreed requirements.
                 </div>
 
 
-                <!-- REQUIREMENTS -->
+                <!-- =========================
+                     REQUIREMENTS
+                ========================== -->
 
                 <div
                     class="requirements-box"
@@ -741,159 +821,159 @@
                 </div>
 
 
-                <!-- FIXED PRICE PAYMENT -->
+                <div class="method active">
 
-                <div id="paymentArea">
+                    <label class="method-header">
 
-                    <div class="method active">
+                        <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="bank"
+                            checked
+                        >
 
-                        <label class="method-header">
+                        <div>
 
-                            <input
-                                type="radio"
-                                name="paymentMethod"
-                                value="bank"
-                                checked
-                            >
+                            <div class="method-name">
+                                Bank Transfer
+                            </div>
 
-                            <div>
+                            <div class="method-description">
+                                Pay directly to the VEXORIS company bank account.
+                            </div>
 
-                                <div class="method-name">
-                                    Bank Transfer
-                                </div>
+                        </div>
 
-                                <div class="method-description">
-                                    Pay directly to the VEXORIS company bank account.
-                                </div>
+                    </label>
+
+
+                    <div class="method-content">
+
+                        <div class="payment-instructions">
+
+                            <h3>
+                                Payment Instructions
+                            </h3>
+
+                            <p id="paymentInstructionText">
+                                Transfer the amount shown above to the
+                                following VEXORIS company bank account.
+                                After completing the transfer, submit
+                                the transaction details below for verification.
+                            </p>
+
+                        </div>
+
+
+                        <!-- =========================
+                             BANK DETAILS
+                        ========================== -->
+
+                        <div class="bank-details">
+
+                            <p>
+                                <strong>Bank:</strong>
+                                Soneri Bank Limited
+                            </p>
+
+                            <p>
+                                <strong>Account Title:</strong>
+                                VEXORIS SOLUTIONS (PRIVATE) LIMITED
+                            </p>
+
+                            <p>
+                                <strong>Account Number:</strong>
+                                050920018247454
+                            </p>
+
+                            <p>
+                                <strong>IBAN:</strong>
+                                PK25SONE0050920018247454
+                            </p>
+
+                        </div>
+
+
+                        <!-- =========================
+                             PAYMENT CONFIRMATION
+                        ========================== -->
+
+                        <div class="payment-confirmation">
+
+                            <h3>
+                                Payment Confirmation
+                            </h3>
+
+                            <p>
+                                After completing the transfer, provide
+                                the details below so the payment can
+                                be reviewed.
+                            </p>
+
+
+                            <div class="form-group">
+
+                                <label for="paymentCustomerName">
+                                    Customer Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="paymentCustomerName"
+                                    placeholder="Enter your full name"
+                                    autocomplete="name"
+                                >
 
                             </div>
 
-                        </label>
 
+                            <div class="form-group">
 
-                        <div class="method-content">
+                                <label for="paymentAccountNumber">
+                                    Account Number Used
+                                </label>
 
-                            <div class="payment-instructions">
-
-                                <h3>
-                                    Payment Instructions
-                                </h3>
-
-                                <p>
-                                    Transfer the amount shown above to the
-                                    following VEXORIS company bank account.
-                                    After completing the transfer, submit
-                                    the transaction details below for verification.
-                                </p>
+                                <input
+                                    type="text"
+                                    id="paymentAccountNumber"
+                                    placeholder="Enter the account number used for payment"
+                                    inputmode="numeric"
+                                >
 
                             </div>
 
 
-                            <div class="bank-details">
+                            <div class="form-group">
 
-                                <p>
-                                    <strong>Bank:</strong>
-                                    Soneri Bank Limited
-                                </p>
+                                <label for="transactionId">
+                                    Transaction ID / TRX ID
+                                </label>
 
-                                <p>
-                                    <strong>Account Title:</strong>
-                                    VEXORIS SOLUTIONS (PRIVATE) LIMITED
-                                </p>
-
-                                <p>
-                                    <strong>Account Number:</strong>
-                                    050920018247454
-                                </p>
-
-                                <p>
-                                    <strong>IBAN:</strong>
-                                    PK25SONE0050920018247454
-                                </p>
+                                <input
+                                    type="text"
+                                    id="transactionId"
+                                    placeholder="Enter your transaction ID"
+                                >
 
                             </div>
 
 
-                            <!-- PAYMENT CONFIRMATION -->
+                            <div class="form-group">
 
-                            <div class="payment-confirmation">
+                                <label for="paymentScreenshot">
+                                    Payment Screenshot
+                                </label>
 
-                                <h3>
-                                    Payment Confirmation
-                                </h3>
+                                <input
+                                    type="file"
+                                    id="paymentScreenshot"
+                                    accept="image/*"
+                                >
 
-                                <p>
-                                    After completing the transfer, provide
-                                    the details below so the payment can
-                                    be reviewed.
-                                </p>
-
-
-                                <div class="form-group">
-
-                                    <label for="paymentCustomerName">
-                                        Customer Name
-                                    </label>
-
-                                    <input
-                                        type="text"
-                                        id="paymentCustomerName"
-                                        placeholder="Enter your full name"
-                                        autocomplete="name"
-                                    >
-
-                                </div>
-
-
-                                <div class="form-group">
-
-                                    <label for="paymentAccountNumber">
-                                        Account Number Used
-                                    </label>
-
-                                    <input
-                                        type="text"
-                                        id="paymentAccountNumber"
-                                        placeholder="Enter the account number used for payment"
-                                        inputmode="numeric"
-                                    >
-
-                                </div>
-
-
-                                <div class="form-group">
-
-                                    <label for="transactionId">
-                                        Transaction ID / TRX ID
-                                    </label>
-
-                                    <input
-                                        type="text"
-                                        id="transactionId"
-                                        placeholder="Enter your transaction ID"
-                                    >
-
-                                </div>
-
-
-                                <div class="form-group">
-
-                                    <label for="paymentScreenshot">
-                                        Payment Screenshot
-                                    </label>
-
-                                    <input
-                                        type="file"
-                                        id="paymentScreenshot"
-                                        accept="image/*"
-                                    >
-
-                                    <small>
-                                        Upload a clear screenshot showing
-                                        the payment transaction.
-                                    </small>
-
-                                </div>
+                                <small>
+                                    Upload a clear screenshot showing
+                                    the payment transaction.
+                                </small>
 
                             </div>
 
@@ -901,44 +981,22 @@
 
                     </div>
 
-
-                    <button
-                        type="button"
-                        class="pay-btn"
-                        id="payButton"
-                    >
-                        Submit Payment Confirmation
-                    </button>
-
-
-                    <div
-                        class="status-message"
-                        id="statusMessage"
-                    ></div>
-
                 </div>
 
 
-                <!-- CUSTOM QUOTE STATE -->
+                <button
+                    type="button"
+                    class="pay-btn"
+                    id="payButton"
+                >
+                    Submit Payment Confirmation
+                </button>
+
 
                 <div
-                    class="quote-state"
-                    id="quoteState"
-                    style="display: none;"
-                >
-
-                    <h3>
-                        Quotation Required
-                    </h3>
-
-                    <p>
-                        This service is project-based or custom-priced.
-                        No payment is required at this stage. VEXORIS will
-                        review your requirements and confirm the project
-                        quotation before payment.
-                    </p>
-
-                </div>
+                    class="status-message"
+                    id="statusMessage"
+                ></div>
 
 
                 <div class="security">
@@ -980,11 +1038,19 @@
         document.addEventListener("DOMContentLoaded", function () {
 
             /* =========================
+               CONSTANTS
+            ========================== */
+
+            const PROJECT_ADVANCE = 5000;
+
+
+            /* =========================
                GET ORDER
             ========================== */
 
             const storedOrder =
                 localStorage.getItem("vexorisOrder");
+
 
             if (!storedOrder) {
 
@@ -992,17 +1058,21 @@
                     "No active service request was found. Please start again."
                 );
 
-                window.location.href = "index.html";
+                window.location.href =
+                    "index.html";
 
                 return;
+
             }
 
 
             let order;
 
+
             try {
 
-                order = JSON.parse(storedOrder);
+                order =
+                    JSON.parse(storedOrder);
 
             } catch (error) {
 
@@ -1010,36 +1080,55 @@
                     "Your service request could not be loaded. Please start again."
                 );
 
-                localStorage.removeItem("vexorisOrder");
+                localStorage.removeItem(
+                    "vexorisOrder"
+                );
 
-                window.location.href = "index.html";
+                window.location.href =
+                    "index.html";
 
                 return;
+
             }
 
 
             /* =========================
-               DISPLAY ORDER
+               DISPLAY BASIC INFORMATION
             ========================== */
 
-            document.getElementById("serviceName").textContent =
-                order.service?.name || "VEXORIS Service";
+            document.getElementById(
+                "serviceName"
+            ).textContent =
+                order.service?.name ||
+                "VEXORIS Service";
 
 
-            document.getElementById("customerName").textContent =
-                order.customer?.name || "—";
+            document.getElementById(
+                "customerName"
+            ).textContent =
+                order.customer?.name ||
+                "—";
 
 
-            document.getElementById("customerEmail").textContent =
-                order.customer?.email || "—";
+            document.getElementById(
+                "customerEmail"
+            ).textContent =
+                order.customer?.email ||
+                "—";
 
 
-            document.getElementById("customerPhone").textContent =
-                order.customer?.phone || "—";
+            document.getElementById(
+                "customerPhone"
+            ).textContent =
+                order.customer?.phone ||
+                "—";
 
 
-            document.getElementById("orderReference").textContent =
-                order.reference || "—";
+            document.getElementById(
+                "orderReference"
+            ).textContent =
+                order.reference ||
+                "—";
 
 
             /* =========================
@@ -1053,11 +1142,15 @@
 
 
             const requirementsBox =
-                document.getElementById("requirementsBox");
+                document.getElementById(
+                    "requirementsBox"
+                );
 
 
             const requirementsText =
-                document.getElementById("requirementsText");
+                document.getElementById(
+                    "requirementsText"
+                );
 
 
             if (requirements) {
@@ -1072,24 +1165,60 @@
 
 
             /* =========================
-               PRICE
+               ELEMENTS
             ========================== */
 
-            const totalPrice =
-                document.getElementById("totalPrice");
+            const serviceAmount =
+                document.getElementById(
+                    "serviceAmount"
+                );
+
+
+            const advanceRow =
+                document.getElementById(
+                    "advanceRow"
+                );
+
+
+            const advanceAmount =
+                document.getElementById(
+                    "advanceAmount"
+                );
+
+
+            const remainingRow =
+                document.getElementById(
+                    "remainingRow"
+                );
+
+
+            const remainingAmount =
+                document.getElementById(
+                    "remainingAmount"
+                );
+
+
+            const payableAmount =
+                document.getElementById(
+                    "payableAmount"
+                );
 
 
             const customNote =
-                document.getElementById("customNote");
+                document.getElementById(
+                    "customNote"
+                );
 
 
-            const paymentArea =
-                document.getElementById("paymentArea");
+            const paymentInstructionText =
+                document.getElementById(
+                    "paymentInstructionText"
+                );
 
 
-            const quoteState =
-                document.getElementById("quoteState");
-
+            /* =========================
+               DETERMINE SERVICE TYPE
+            ========================== */
 
             const servicePrice =
                 order.service?.price;
@@ -1101,77 +1230,80 @@
                 Number(servicePrice) > 0;
 
 
+            /* =========================
+               FIXED PRICE SERVICE
+            ========================== */
+
             if (hasFixedPrice) {
 
-                totalPrice.textContent =
+                const price =
+                    Number(servicePrice);
+
+
+                serviceAmount.textContent =
                     "PKR " +
-                    Number(servicePrice).toLocaleString("en-PK");
+                    price.toLocaleString("en-PK");
+
+
+                advanceRow.style.display =
+                    "none";
+
+
+                remainingRow.style.display =
+                    "none";
+
+
+                payableAmount.textContent =
+                    "PKR " +
+                    price.toLocaleString("en-PK");
+
 
                 customNote.style.display =
                     "none";
 
-                paymentArea.style.display =
-                    "block";
 
-                quoteState.style.display =
-                    "none";
-
-            } else {
-
-                totalPrice.textContent =
-                    "Quotation Required";
-
-                customNote.style.display =
-                    "block";
-
-                paymentArea.style.display =
-                    "none";
-
-                quoteState.style.display =
-                    "block";
+                paymentInstructionText.textContent =
+                    "Transfer the full service amount shown above to the following VEXORIS company bank account. After completing the transfer, submit the transaction details below for verification.";
 
             }
 
 
             /* =========================
-               BANK PAYMENT METHOD
+               PROJECT / QUOTATION SERVICE
             ========================== */
 
-            const paymentMethods =
-                document.querySelectorAll(
-                    'input[name="paymentMethod"]'
-                );
+            else {
+
+                serviceAmount.textContent =
+                    "To Be Confirmed";
 
 
-            paymentMethods.forEach(function (radio) {
-
-                radio.addEventListener(
-                    "change",
-                    function () {
-
-                        document
-                            .querySelectorAll(".method")
-                            .forEach(function (method) {
-
-                                method.classList.remove("active");
-
-                            });
+                advanceRow.style.display =
+                    "flex";
 
 
-                        const selectedMethod =
-                            radio.closest(".method");
+                advanceAmount.textContent =
+                    "PKR " +
+                    PROJECT_ADVANCE.toLocaleString("en-PK");
 
 
-                        if (selectedMethod) {
+                remainingAmount.textContent =
+                    "To Be Confirmed";
 
-                            selectedMethod.classList.add("active");
 
-                        }
+                payableAmount.textContent =
+                    "PKR " +
+                    PROJECT_ADVANCE.toLocaleString("en-PK");
 
-                    }
-                );
 
-            });
+                customNote.style.display =
+                    "block";
+
+
+                paymentInstructionText.textContent =
+                    "A PKR 5,000 advance is required for this project. Transfer the advance amount to the following VEXORIS company bank account and submit the transaction details below.";
+
+            }
 
 
             /* =========================
@@ -1179,16 +1311,21 @@
             ========================== */
 
             const payButton =
-                document.getElementById("payButton");
+                document.getElementById(
+                    "payButton"
+                );
 
 
             const statusMessage =
-                document.getElementById("statusMessage");
+                document.getElementById(
+                    "statusMessage"
+                );
 
 
             payButton.addEventListener(
                 "click",
                 function () {
+
 
                     /* =========================
                        CUSTOMER NAME
@@ -1289,11 +1426,11 @@
                     }
 
 
-                    /* =========================
-                       BASIC FILE VALIDATION
-                    ========================= */
-
-                    if (!screenshot.type.startsWith("image/")) {
+                    if (
+                        !screenshot.type.startsWith(
+                            "image/"
+                        )
+                    ) {
 
                         alert(
                             "Please upload a valid image file."
@@ -1305,12 +1442,47 @@
 
 
                     /* =========================
+                       DETERMINE PAYMENT AMOUNT
+                    ========================== */
+
+                    let amountPaid;
+
+                    let paymentType;
+
+
+                    if (hasFixedPrice) {
+
+                        amountPaid =
+                            Number(servicePrice);
+
+                        paymentType =
+                            "full_payment";
+
+                    } else {
+
+                        amountPaid =
+                            PROJECT_ADVANCE;
+
+                        paymentType =
+                            "project_advance";
+
+                    }
+
+
+                    /* =========================
                        SAVE PAYMENT INFORMATION
                     ========================== */
 
                     order.payment = {
 
-                        method: "bank",
+                        method:
+                            "bank",
+
+                        paymentType:
+                            paymentType,
+
+                        amountPaid:
+                            amountPaid,
 
                         customerName:
                             customerName,
@@ -1330,9 +1502,49 @@
                     };
 
 
-                    order.paymentStatus =
-                        "verification_pending";
+                    /* =========================
+                       PROJECT PAYMENT STATUS
+                    ========================== */
 
+                    if (!hasFixedPrice) {
+
+                        order.paymentStatus =
+                            "advance_verification_pending";
+
+                        order.projectPayment = {
+
+                            advanceAmount:
+                                PROJECT_ADVANCE,
+
+                            remainingAmount:
+                                null,
+
+                            totalProjectAmount:
+                                null,
+
+                            quotationStatus:
+                                "pending"
+
+                        };
+
+                    }
+
+
+                    /* =========================
+                       FIXED PAYMENT STATUS
+                    ========================== */
+
+                    else {
+
+                        order.paymentStatus =
+                            "verification_pending";
+
+                    }
+
+
+                    /* =========================
+                       SAVE ORDER
+                    ========================== */
 
                     localStorage.setItem(
                         "vexorisOrder",
@@ -1347,6 +1559,7 @@
                     payButton.disabled =
                         true;
 
+
                     payButton.textContent =
                         "Submitting...";
 
@@ -1356,19 +1569,22 @@
 
 
                     statusMessage.textContent =
-                        "Payment information submitted. Redirecting...";
+                        "Your payment information has been submitted. Redirecting...";
 
 
                     /* =========================
                        THANK YOU PAGE
                     ========================== */
 
-                    setTimeout(function () {
+                    setTimeout(
+                        function () {
 
-                        window.location.href =
-                            "thank-you.html";
+                            window.location.href =
+                                "thank-you.html";
 
-                    }, 500);
+                        },
+                        500
+                    );
 
                 }
             );
