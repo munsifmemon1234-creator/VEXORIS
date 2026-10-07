@@ -1895,3 +1895,242 @@ height:30px;
     }
 
 }
+
+/* =====================================
+   VEXORIS DESKTOP FINAL POLISH
+   Desktop / Laptop ONLY
+   Mobile styles are untouched
+===================================== */
+
+@media (min-width: 769px){
+
+    /* =========================
+       DESKTOP HEADER
+    ========================= */
+
+    header{
+        background:rgba(8,17,31,.94);
+        backdrop-filter:blur(18px);
+        -webkit-backdrop-filter:blur(18px);
+        border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .navbar{
+        width:92%;
+        max-width:1250px;
+        height:78px;
+        padding:0;
+    }
+
+    .logo img{
+        height:58px;
+        width:auto;
+        display:block;
+    }
+
+    .nav-links{
+        display:flex;
+        align-items:center;
+        gap:32px;
+        list-style:none;
+        background:transparent;
+        margin:0;
+        padding:0;
+    }
+
+    .nav-links li{
+        margin:0;
+        padding:0;
+    }
+
+    .nav-links a{
+        color:#e2e8f0;
+        text-decoration:none;
+        font-size:15px;
+        font-weight:500;
+        letter-spacing:.2px;
+        transition:
+            color .3s ease,
+            opacity .3s ease;
+    }
+
+    .nav-links a:hover{
+        color:#38bdf8;
+    }
+
+    .nav-links a.active{
+        color:#38bdf8;
+    }
+
+
+    /* =========================
+       DESKTOP HERO
+    ========================= */
+
+    .hero{
+        min-height:100vh;
+        padding:130px 30px 90px;
+    }
+
+    .hero-content{
+        max-width:1000px;
+    }
+
+    .hero-badge{
+        font-size:14px;
+        padding:9px 20px;
+        margin-bottom:28px;
+    }
+
+    .hero h1{
+        font-size:68px;
+        line-height:1.08;
+        letter-spacing:-1.5px;
+        margin-bottom:28px;
+    }
+
+    .hero p{
+        max-width:780px;
+        font-size:18px;
+        line-height:1.8;
+        margin-bottom:38px;
+    }
+
+    .hero-buttons{
+        gap:16px;
+    }
+
+    .btn{
+        padding:15px 30px;
+        border-radius:9px;
+    }
+
+
+    /* =========================
+       DESKTOP SECTION HEADINGS
+    ========================= */
+
+    section h2{
+        font-size:40px;
+        line-height:1.2;
+        letter-spacing:-.5px;
+    }
+
+
+    /* =========================
+       DESKTOP SERVICES
+    ========================= */
+
+    .services{
+        padding:105px 7%;
+    }
+
+    .services .service-container{
+        grid-template-columns:repeat(3,1fr);
+        gap:26px;
+        max-width:1250px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .services .card{
+        min-height:380px;
+        padding:36px 30px 30px;
+    }
+
+    .services .card h3{
+        font-size:21px;
+    }
+
+    .services .card p{
+        font-size:15px;
+        line-height:1.75;
+    }
+
+
+    /* =========================
+       DESKTOP PROCESS
+    ========================= */
+
+    .process{
+        padding:100px 7%;
+    }
+
+    .process-grid{
+        max-width:1250px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+
+    /* =========================
+       DESKTOP WHY VEXORIS
+    ========================= */
+
+    .why{
+        padding:100px 7%;
+    }
+
+    .features{
+        max-width:1200px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+
+    /* =========================
+       DESKTOP TECHNOLOGIES
+    ========================= */
+
+    .technologies{
+        padding:100px 7%;
+    }
+
+    .tech-container{
+        max-width:1250px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+
+    /* =========================
+       DESKTOP FAQ
+    ========================= */
+
+    .faq{
+        padding:100px 7%;
+    }
+
+    .faq-container{
+        max-width:900px;
+    }
+
+
+    /* =========================
+       DESKTOP CONTACT
+    ========================= */
+
+    .contact{
+        padding:100px 7%;
+    }
+
+    .contact-info{
+        padding-bottom:20px;
+    }
+
+
+    /* =========================
+       DESKTOP FOOTER
+    ========================= */
+
+    footer{
+        padding:70px 7% 25px;
+    }
+
+    .footer-container{
+        max-width:1250px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+}
