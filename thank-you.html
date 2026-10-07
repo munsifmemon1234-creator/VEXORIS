@@ -10,11 +10,11 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Payment Submitted | VEXORIS</title>
+    <title>Request Submitted | VEXORIS</title>
 
     <meta
         name="description"
-        content="Your payment details have been submitted successfully to VEXORIS."
+        content="Your VEXORIS service request and payment details have been submitted successfully."
     >
 
     <link
@@ -27,7 +27,6 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
         rel="stylesheet"
     >
-
 
     <style>
 
@@ -76,8 +75,14 @@
             box-shadow:
                 0 20px 50px rgba(15, 23, 42, 0.10);
 
+            border: 1px solid #e2e8f0;
+
         }
 
+
+        /* =========================
+           LOGO
+        ========================== */
 
         .logo {
 
@@ -89,6 +94,10 @@
 
         }
 
+
+        /* =========================
+           SUCCESS ICON
+        ========================== */
 
         .success-icon {
 
@@ -117,6 +126,10 @@
         }
 
 
+        /* =========================
+           HEADING
+        ========================== */
+
         h1 {
 
             font-size: 30px;
@@ -141,6 +154,10 @@
         }
 
 
+        /* =========================
+           ORDER CARD
+        ========================== */
+
         .order-card {
 
             background: #f8fafc;
@@ -153,16 +170,18 @@
 
             text-align: left;
 
-            margin-bottom: 28px;
+            margin-bottom: 25px;
 
         }
 
 
         .order-card p {
 
-            margin: 8px 0;
+            margin: 9px 0;
 
             font-size: 14px;
+
+            line-height: 1.5;
 
         }
 
@@ -174,13 +193,65 @@
         }
 
 
+        /* =========================
+           PAYMENT BREAKDOWN
+        ========================== */
+
+        .payment-breakdown {
+
+            margin-top: 18px;
+
+            border-top: 1px solid #e2e8f0;
+
+            padding-top: 15px;
+
+        }
+
+
+        .breakdown-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding: 7px 0;
+
+            font-size: 13px;
+
+        }
+
+
+        .breakdown-label {
+
+            color: #64748b;
+
+        }
+
+
+        .breakdown-value {
+
+            color: #0f172a;
+
+            font-weight: 600;
+
+            text-align: right;
+
+        }
+
+
+        /* =========================
+           STATUS
+        ========================== */
+
         .status {
 
             display: inline-block;
 
-            margin-top: 8px;
+            margin-top: 12px;
 
-            padding: 6px 12px;
+            padding: 7px 13px;
 
             border-radius: 20px;
 
@@ -188,18 +259,22 @@
 
             color: #92400e;
 
-            font-size: 13px;
+            font-size: 12px;
 
             font-weight: 600;
 
         }
 
 
+        /* =========================
+           NOTE
+        ========================== */
+
         .note {
 
             font-size: 13px;
 
-            line-height: 1.6;
+            line-height: 1.7;
 
             color: #64748b;
 
@@ -207,6 +282,17 @@
 
         }
 
+
+        .note strong {
+
+            color: #334155;
+
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================== */
 
         .home-btn {
 
@@ -240,22 +326,55 @@
         }
 
 
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
         @media (max-width: 600px) {
 
             body {
+
                 padding: 18px;
+
             }
+
 
             .thank-you-container {
+
                 padding: 35px 22px;
+
+                border-radius: 15px;
+
             }
+
 
             h1 {
+
                 font-size: 25px;
+
             }
 
+
             .main-message {
+
                 font-size: 14px;
+
+            }
+
+
+            .breakdown-row {
+
+                flex-direction: column;
+
+                gap: 2px;
+
+            }
+
+
+            .breakdown-value {
+
+                text-align: left;
+
             }
 
         }
@@ -271,7 +390,9 @@
     <div class="thank-you-container">
 
 
-        <!-- VEXORIS LOGO -->
+        <!-- =========================
+             VEXORIS LOGO
+        ========================== -->
 
         <img
             src="assets/IMG_9899.png"
@@ -280,66 +401,199 @@
         >
 
 
-        <!-- SUCCESS ICON -->
+        <!-- =========================
+             SUCCESS ICON
+        ========================== -->
 
         <div class="success-icon">
             ✓
         </div>
 
 
-        <h1>
-            Payment Details Submitted
+        <!-- =========================
+             DYNAMIC HEADING
+        ========================== -->
+
+        <h1 id="pageTitle">
+            Submission Received
         </h1>
 
 
-        <p class="main-message">
+        <!-- =========================
+             DYNAMIC MESSAGE
+        ========================== -->
+
+        <p
+            class="main-message"
+            id="mainMessage"
+        >
 
             Thank you for choosing VEXORIS.
 
-            Your payment details have been submitted successfully.
-
-            Our team will review your payment and contact you
-            once the transaction has been verified.
+            Your information has been submitted successfully.
 
         </p>
 
 
-        <!-- ORDER INFORMATION -->
+        <!-- =========================
+             ORDER INFORMATION
+        ========================== -->
 
         <div class="order-card">
 
+
             <p>
-                <strong>Order Reference:</strong>
-                <span id="orderReference">—</span>
+
+                <strong>
+                    Order Reference:
+                </strong>
+
+                <span id="orderReference">
+                    —
+                </span>
+
             </p>
 
 
             <p>
-                <strong>Customer:</strong>
-                <span id="customerName">—</span>
+
+                <strong>
+                    Customer:
+                </strong>
+
+                <span id="customerName">
+                    —
+                </span>
+
             </p>
 
 
             <p>
-                <strong>Service:</strong>
-                <span id="serviceName">—</span>
+
+                <strong>
+                    Service:
+                </strong>
+
+                <span id="serviceName">
+                    —
+                </span>
+
             </p>
 
 
-            <p>
-                <strong>Amount:</strong>
-                <span id="totalPrice">—</span>
-            </p>
+            <!-- =========================
+                 PAYMENT BREAKDOWN
+            ========================== -->
+
+            <div
+                class="payment-breakdown"
+                id="paymentBreakdown"
+            >
 
 
-            <span class="status">
+                <div
+                    class="breakdown-row"
+                    id="serviceAmountRow"
+                >
+
+                    <span class="breakdown-label">
+                        Service Amount
+                    </span>
+
+                    <span
+                        class="breakdown-value"
+                        id="serviceAmount"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="breakdown-row"
+                    id="advanceRow"
+                    style="display: none;"
+                >
+
+                    <span class="breakdown-label">
+                        Advance Paid
+                    </span>
+
+                    <span
+                        class="breakdown-value"
+                        id="advanceAmount"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="breakdown-row"
+                    id="remainingRow"
+                >
+
+                    <span class="breakdown-label">
+                        Remaining Balance
+                    </span>
+
+                    <span
+                        class="breakdown-value"
+                        id="remainingAmount"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="breakdown-row"
+                    id="paidNowRow"
+                >
+
+                    <span class="breakdown-label">
+                        Amount Submitted
+                    </span>
+
+                    <span
+                        class="breakdown-value"
+                        id="paidNowAmount"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =========================
+                 STATUS
+            ========================== -->
+
+            <span
+                class="status"
+                id="statusText"
+            >
                 Payment Verification Pending
             </span>
+
 
         </div>
 
 
-        <p class="note">
+        <!-- =========================
+             NOTE
+        ========================== -->
+
+        <p
+            class="note"
+            id="noteText"
+        >
 
             Please keep your transaction ID and payment screenshot
             available until your payment has been verified.
@@ -350,6 +604,10 @@
         </p>
 
 
+        <!-- =========================
+             HOME BUTTON
+        ========================== -->
+
         <a
             href="index.html"
             class="home-btn"
@@ -359,6 +617,7 @@
 
 
     </div>
+
 
 
     <!-- =========================
@@ -372,57 +631,323 @@
             function () {
 
 
-                const order = JSON.parse(
-                    localStorage.getItem("vexorisOrder")
-                );
+                /* =========================
+                   GET ORDER
+                ========================== */
+
+                const storedOrder =
+                    localStorage.getItem(
+                        "vexorisOrder"
+                    );
 
 
-                if (!order) {
+                if (!storedOrder) {
 
                     return;
 
                 }
 
 
+                let order;
+
+
+                try {
+
+                    order =
+                        JSON.parse(
+                            storedOrder
+                        );
+
+                } catch (error) {
+
+                    return;
+
+                }
+
+
+                /* =========================
+                   BASIC INFORMATION
+                ========================== */
+
                 document.getElementById(
                     "orderReference"
                 ).textContent =
-                    order.reference || "—";
+                    order.reference ||
+                    "—";
 
 
                 document.getElementById(
                     "customerName"
                 ).textContent =
-                    order.customer?.name || "—";
+                    order.customer?.name ||
+                    "—";
 
 
                 document.getElementById(
                     "serviceName"
                 ).textContent =
-                    order.service?.name || "—";
+                    order.service?.name ||
+                    "—";
 
 
-                const price =
-                    order.service?.price;
+                /* =========================
+                   ELEMENTS
+                ========================== */
 
+                const pageTitle =
+                    document.getElementById(
+                        "pageTitle"
+                    );
+
+
+                const mainMessage =
+                    document.getElementById(
+                        "mainMessage"
+                    );
+
+
+                const statusText =
+                    document.getElementById(
+                        "statusText"
+                    );
+
+
+                const noteText =
+                    document.getElementById(
+                        "noteText"
+                    );
+
+
+                const serviceAmountRow =
+                    document.getElementById(
+                        "serviceAmountRow"
+                    );
+
+
+                const serviceAmount =
+                    document.getElementById(
+                        "serviceAmount"
+                    );
+
+
+                const advanceRow =
+                    document.getElementById(
+                        "advanceRow"
+                    );
+
+
+                const advanceAmount =
+                    document.getElementById(
+                        "advanceAmount"
+                    );
+
+
+                const remainingRow =
+                    document.getElementById(
+                        "remainingRow"
+                    );
+
+
+                const remainingAmount =
+                    document.getElementById(
+                        "remainingAmount"
+                    );
+
+
+                const paidNowAmount =
+                    document.getElementById(
+                        "paidNowAmount"
+                    );
+
+
+                /* =========================
+                   PAYMENT TYPE
+                ========================== */
+
+                const paymentType =
+                    order.payment?.paymentType ||
+                    "";
+
+
+                /* =========================
+                   PROJECT ADVANCE
+                ========================== */
 
                 if (
-                    price !== null &&
-                    price !== undefined
+                    paymentType ===
+                    "project_advance"
                 ) {
 
-                    document.getElementById(
-                        "totalPrice"
-                    ).textContent =
+
+                    pageTitle.textContent =
+                        "Project Request Submitted";
+
+
+                    mainMessage.textContent =
+                        "Thank you for choosing VEXORIS. Your project request and advance payment details have been submitted successfully. Our team will review your requirements and payment information before proceeding.";
+
+
+                    serviceAmountRow
+                        .style
+                        .display =
+                        "flex";
+
+
+                    serviceAmount.textContent =
+                        "To Be Confirmed";
+
+
+                    advanceRow
+                        .style
+                        .display =
+                        "flex";
+
+
+                    const advance =
+                        order.payment?.amountPaid ||
+                        5000;
+
+
+                    advanceAmount.textContent =
                         "PKR " +
-                        Number(price).toLocaleString("en-PK");
+                        Number(
+                            advance
+                        ).toLocaleString(
+                            "en-PK"
+                        );
 
-                } else {
 
-                    document.getElementById(
-                        "totalPrice"
-                    ).textContent =
-                        "Custom Quote";
+                    remainingRow
+                        .style
+                        .display =
+                        "flex";
+
+
+                    remainingAmount.textContent =
+                        "To Be Confirmed";
+
+
+                    paidNowAmount.textContent =
+                        "PKR " +
+                        Number(
+                            advance
+                        ).toLocaleString(
+                            "en-PK"
+                        );
+
+
+                    statusText.textContent =
+                        "Advance Payment Verification Pending";
+
+
+                    noteText.innerHTML =
+                        "Your PKR 5,000 advance is pending verification. After reviewing your project requirements, VEXORIS will confirm the final project quotation and remaining balance. If you have any questions, contact VEXORIS at <strong>vexoris.info@gmail.com</strong>.";
+
+                }
+
+
+                /* =========================
+                   FULL PAYMENT
+                ========================== */
+
+                else {
+
+
+                    const price =
+                        order.service?.price;
+
+
+                    pageTitle.textContent =
+                        "Payment Details Submitted";
+
+
+                    mainMessage.textContent =
+                        "Thank you for choosing VEXORIS. Your payment details have been submitted successfully. Our team will review your payment and contact you once the transaction has been verified.";
+
+
+                    if (
+                        price !== null &&
+                        price !== undefined
+                    ) {
+
+
+                        const formattedPrice =
+                            "PKR " +
+                            Number(
+                                price
+                            ).toLocaleString(
+                                "en-PK"
+                            );
+
+
+                        serviceAmount.textContent =
+                            formattedPrice;
+
+
+                        serviceAmountRow
+                            .style
+                            .display =
+                            "flex";
+
+
+                        advanceRow
+                            .style
+                            .display =
+                            "none";
+
+
+                        remainingRow
+                            .style
+                            .display =
+                            "none";
+
+
+                        paidNowAmount.textContent =
+                            formattedPrice;
+
+                    }
+
+
+                    else {
+
+
+                        serviceAmountRow
+                            .style
+                            .display =
+                            "none";
+
+
+                        advanceRow
+                            .style
+                            .display =
+                            "none";
+
+
+                        remainingRow
+                            .style
+                            .display =
+                            "none";
+
+
+                        paidNowAmount.textContent =
+                            order.payment?.amountPaid
+                                ? "PKR " +
+                                  Number(
+                                      order.payment.amountPaid
+                                  ).toLocaleString(
+                                      "en-PK"
+                                  )
+                                : "—";
+
+                    }
+
+
+                    statusText.textContent =
+                        "Payment Verification Pending";
+
+
+                    noteText.innerHTML =
+                        "Please keep your transaction ID and payment screenshot available until your payment has been verified. If you have any questions, contact VEXORIS at <strong>vexoris.info@gmail.com</strong>.";
 
                 }
 
