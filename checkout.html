@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Checkout | VEXORIS</title>
+    <title>Service Request | VEXORIS</title>
 
     <meta
         name="description"
-        content="Complete your VEXORIS service order securely."
+        content="Submit your project requirements to VEXORIS SOLUTIONS (PRIVATE) LIMITED."
     >
 
-    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -21,20 +23,16 @@
         rel="stylesheet"
     >
 
-    <!--
-        VEXORIS logo
-        Keep this path if your logo is inside assets/
-    -->
     <link
         rel="icon"
         type="image/png"
-        href="assets/1C0B85DB-9867-4DA0-8F96-12E14873F6CC.png"
+        href="assets/IMG_9899.png"
     >
 
     <style>
 
         /* =========================================
-           VEXORIS CHECKOUT PAGE
+           VEXORIS SERVICE REQUEST
            ========================================= */
 
         * {
@@ -45,10 +43,7 @@
 
         :root {
             --bg: #06101d;
-            --bg-light: #0a1728;
-            --card: rgba(13, 27, 45, 0.92);
-            --card-light: rgba(16, 33, 54, 0.95);
-
+            --card: rgba(13, 27, 45, 0.94);
             --border: rgba(148, 163, 184, 0.16);
 
             --text: #f8fafc;
@@ -70,7 +65,6 @@
         body {
             font-family: "Poppins", sans-serif;
             color: var(--text);
-
             min-height: 100vh;
 
             background:
@@ -93,8 +87,8 @@
         }
 
         a {
-            text-decoration: none;
             color: inherit;
+            text-decoration: none;
         }
 
         button,
@@ -140,14 +134,12 @@
         .logo-area img {
             width: 44px;
             height: 44px;
-
             object-fit: contain;
         }
 
         .logo-area span {
             font-size: 18px;
             font-weight: 700;
-
             letter-spacing: 2px;
         }
 
@@ -157,7 +149,7 @@
             font-size: 13px;
             font-weight: 500;
 
-            transition: 0.3s ease;
+            transition: color 0.25s ease;
         }
 
         .back-home:hover {
@@ -170,8 +162,7 @@
            ========================================= */
 
         .checkout-page {
-            width: min(1150px, 92%);
-
+            width: min(1120px, 92%);
             margin: 0 auto;
 
             padding: 70px 0 80px;
@@ -179,19 +170,21 @@
 
 
         /* =========================================
-           PAGE INTRO
+           INTRO
            ========================================= */
 
         .page-intro {
+            max-width: 720px;
+
+            margin: 0 auto 45px;
+
             text-align: center;
-
-            max-width: 750px;
-
-            margin: 0 auto 48px;
         }
 
         .eyebrow {
             display: inline-block;
+
+            margin-bottom: 13px;
 
             color: var(--primary);
 
@@ -199,29 +192,26 @@
             font-weight: 700;
 
             letter-spacing: 2.5px;
-
-            margin-bottom: 13px;
         }
 
         .page-intro h1 {
-            font-size: clamp(32px, 5vw, 52px);
+            margin-bottom: 15px;
+
+            font-size: clamp(32px, 5vw, 50px);
 
             line-height: 1.15;
-
-            margin-bottom: 15px;
         }
 
         .page-intro p {
             color: var(--muted);
 
             font-size: 14px;
-
             line-height: 1.8;
         }
 
 
         /* =========================================
-           MAIN GRID
+           GRID
            ========================================= */
 
         .checkout-grid {
@@ -238,10 +228,17 @@
 
 
         /* =========================================
-           CARDS
+           CARD
            ========================================= */
 
         .checkout-card {
+            padding: 32px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 22px;
+
             background:
                 linear-gradient(
                     145deg,
@@ -249,24 +246,16 @@
                     rgba(8, 21, 36, 0.97)
                 );
 
-            border:
-                1px solid var(--border);
-
-            border-radius: 22px;
-
-            padding: 32px;
-
             box-shadow: var(--shadow);
         }
 
 
         /* =========================================
-           CARD HEADING
+           CARD HEADER
            ========================================= */
 
         .card-heading {
             display: flex;
-
             align-items: center;
 
             gap: 14px;
@@ -309,9 +298,38 @@
         }
 
         .card-heading h2 {
-            font-size: 20px;
-
             margin-top: 2px;
+
+            font-size: 20px;
+        }
+
+
+        /* =========================================
+           SERVICE MESSAGE
+           ========================================= */
+
+        .service-message {
+            display: none;
+
+            margin-bottom: 22px;
+            padding: 14px 16px;
+
+            border-radius: 13px;
+
+            background:
+                rgba(56, 189, 248, 0.07);
+
+            border:
+                1px solid rgba(56, 189, 248, 0.16);
+
+            color: var(--muted);
+
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .service-message strong {
+            color: var(--primary);
         }
 
 
@@ -334,12 +352,12 @@
         .form-group label {
             display: block;
 
+            margin-bottom: 8px;
+
             color: #dbe7f5;
 
             font-size: 12px;
             font-weight: 600;
-
-            margin-bottom: 8px;
         }
 
         .required {
@@ -351,19 +369,19 @@
         textarea {
             width: 100%;
 
+            padding: 14px 15px;
+
             border:
                 1px solid rgba(148, 163, 184, 0.20);
 
             border-radius: 12px;
 
-            padding: 14px 15px;
+            outline: none;
 
             background:
                 rgba(3, 12, 22, 0.85);
 
             color: var(--text);
-
-            outline: none;
 
             font-size: 13px;
 
@@ -390,55 +408,22 @@
                 0 0 0 3px rgba(56, 189, 248, 0.08);
         }
 
-        textarea {
-            min-height: 125px;
-
-            resize: vertical;
-        }
-
         select {
             cursor: pointer;
         }
 
-
-        /* =========================================
-           SERVICE SELECTED MESSAGE
-           ========================================= */
-
-        .service-message {
-            display: none;
-
-            padding: 14px 16px;
-
-            margin-bottom: 22px;
-
-            border-radius: 13px;
-
-            background:
-                rgba(56, 189, 248, 0.07);
-
-            border:
-                1px solid rgba(56, 189, 248, 0.16);
-
-            color: var(--muted);
-
-            font-size: 12px;
-
-            line-height: 1.6;
-        }
-
-        .service-message strong {
-            color: var(--primary);
+        textarea {
+            min-height: 140px;
+            resize: vertical;
         }
 
 
         /* =========================================
-           CHECKBOX
+           TERMS
            ========================================= */
 
         .terms-row {
             display: flex;
-
             align-items: flex-start;
 
             gap: 10px;
@@ -451,7 +436,6 @@
             height: 16px;
 
             margin-top: 3px;
-
             padding: 0;
 
             accent-color: var(--primary);
@@ -463,7 +447,6 @@
             color: var(--muted);
 
             font-size: 11px;
-
             line-height: 1.7;
 
             cursor: pointer;
@@ -471,17 +454,16 @@
 
 
         /* =========================================
-           CONTINUE BUTTON
+           BUTTON
            ========================================= */
 
         .continue-btn {
             width: 100%;
 
-            border: none;
-
-            border-radius: 12px;
-
             padding: 15px 20px;
+
+            border: none;
+            border-radius: 12px;
 
             background:
                 linear-gradient(
@@ -511,17 +493,18 @@
 
 
         /* =========================================
-           ORDER SUMMARY
+           SUMMARY
            ========================================= */
 
         .summary-card {
             position: sticky;
-
             top: 103px;
         }
 
         .selected-service {
             padding: 19px;
+
+            margin-bottom: 22px;
 
             border-radius: 15px;
 
@@ -530,12 +513,12 @@
 
             border:
                 1px solid rgba(56, 189, 248, 0.16);
-
-            margin-bottom: 22px;
         }
 
-        .selected-service .service-label {
+        .service-label {
             display: block;
+
+            margin-bottom: 7px;
 
             color: var(--muted);
 
@@ -544,24 +527,22 @@
             letter-spacing: 1px;
 
             text-transform: uppercase;
-
-            margin-bottom: 7px;
         }
 
         .selected-service h3 {
             color: var(--text);
 
             font-size: 17px;
-
             line-height: 1.4;
         }
 
         .selected-service p {
+            margin-top: 6px;
+
             color: var(--muted);
 
             font-size: 11px;
-
-            margin-top: 5px;
+            line-height: 1.6;
         }
 
 
@@ -584,11 +565,14 @@
 
         .summary-item span {
             color: var(--muted);
-
             font-size: 12px;
         }
 
         .summary-item strong {
+            max-width: 65%;
+
+            color: var(--text);
+
             font-size: 12px;
 
             text-align: right;
@@ -603,15 +587,12 @@
             display: flex;
 
             justify-content: space-between;
-
             align-items: center;
 
             padding-top: 22px;
         }
 
         .total span {
-            color: var(--text);
-
             font-size: 13px;
             font-weight: 600;
         }
@@ -620,18 +601,53 @@
             color: var(--primary);
 
             font-size: 22px;
-
             font-weight: 700;
         }
 
 
         /* =========================================
-           INFORMATION BOX
+           PROJECT QUOTE NOTICE
+           ========================================= */
+
+        .quote-notice {
+            display: none;
+
+            margin-top: 20px;
+            padding: 15px;
+
+            border-radius: 14px;
+
+            background:
+                rgba(56, 189, 248, 0.06);
+
+            border:
+                1px solid rgba(56, 189, 248, 0.14);
+        }
+
+        .quote-notice strong {
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: var(--text);
+
+            font-size: 12px;
+        }
+
+        .quote-notice p {
+            color: var(--muted);
+
+            font-size: 10px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================================
+           INFORMATION
            ========================================= */
 
         .info-box {
             margin-top: 25px;
-
             padding: 17px;
 
             border-radius: 14px;
@@ -646,50 +662,18 @@
         .info-box strong {
             display: block;
 
+            margin-bottom: 5px;
+
             color: var(--text);
 
             font-size: 12px;
-
-            margin-bottom: 5px;
         }
 
         .info-box p {
             color: var(--muted);
 
             font-size: 10px;
-
             line-height: 1.7;
-        }
-
-
-        /* =========================================
-           SECURITY
-           ========================================= */
-
-        .security-list {
-            list-style: none;
-
-            margin-top: 20px;
-        }
-
-        .security-list li {
-            color: var(--muted);
-
-            font-size: 10px;
-
-            line-height: 2;
-
-            display: flex;
-
-            gap: 8px;
-        }
-
-        .security-list li::before {
-            content: "✓";
-
-            color: var(--success);
-
-            font-weight: 700;
         }
 
 
@@ -698,16 +682,16 @@
            ========================================= */
 
         .checkout-footer {
-            text-align: center;
+            padding: 25px 20px;
 
             border-top:
                 1px solid var(--border);
 
-            padding: 25px 20px;
-
             color: #64748b;
 
             font-size: 10px;
+
+            text-align: center;
         }
 
 
@@ -732,7 +716,6 @@
             .checkout-page {
                 padding: 50px 0 60px;
             }
-
         }
 
 
@@ -763,7 +746,6 @@
             .back-home {
                 font-size: 11px;
             }
-
         }
 
     </style>
@@ -783,19 +765,18 @@
 
             <img
                 src="assets/IMG_9899.png"
-                alt="VEXORIS Logo"
+                alt="VEXORIS"
             >
 
             <span>VEXORIS</span>
 
         </a>
 
-
         <a
-            href="index.html#pricing"
+            href="index.html#services"
             class="back-home"
         >
-            ← Back to VEXORIS
+            ← Back to Services
         </a>
 
     </header>
@@ -803,13 +784,11 @@
 
 
     <!-- =========================================
-         MAIN CHECKOUT
+         MAIN
          ========================================= -->
 
     <main class="checkout-page">
 
-
-        <!-- PAGE INTRO -->
 
         <div class="page-intro">
 
@@ -818,26 +797,24 @@
             </span>
 
             <h1>
-                Complete Your Order
+                Start Your Project
             </h1>
 
             <p>
-                Provide your details and project requirements
-                to continue with your VEXORIS service order.
+                Tell us what you need and provide a few details
+                about your project. We will review your requirements
+                and guide you through the next step.
             </p>
 
         </div>
 
 
 
-        <!-- CHECKOUT GRID -->
-
         <div class="checkout-grid">
 
 
-
             <!-- =================================
-                 CUSTOMER DETAILS
+                 REQUEST FORM
                  ================================= -->
 
             <section class="checkout-card">
@@ -852,11 +829,11 @@
                     <div>
 
                         <small>
-                            CUSTOMER DETAILS
+                            PROJECT DETAILS
                         </small>
 
                         <h2>
-                            Tell Us About You
+                            Your Information
                         </h2>
 
                     </div>
@@ -865,22 +842,17 @@
 
 
 
-                <!-- SELECTED SERVICE MESSAGE -->
-
                 <div
                     class="service-message"
                     id="serviceMessage"
                 >
-                    You selected
+                    Service selected:
                     <strong id="serviceMessageName">
                         —
-                    </strong>.
-                    Please complete your details below.
+                    </strong>
                 </div>
 
 
-
-                <!-- FORM -->
 
                 <form id="checkoutForm">
 
@@ -888,7 +860,6 @@
                     <!-- NAME + EMAIL -->
 
                     <div class="form-row">
-
 
                         <div class="form-group">
 
@@ -909,7 +880,6 @@
                         </div>
 
 
-
                         <div class="form-group">
 
                             <label for="email">
@@ -927,7 +897,6 @@
                             >
 
                         </div>
-
 
                     </div>
 
@@ -957,74 +926,66 @@
 
                     <!-- SERVICE -->
 
-<div class="form-group">
+                    <div class="form-group">
 
-    <label for="service">
-        Selected Service
-        <span class="required">*</span>
-    </label>
+                        <label for="service">
+                            Service
+                            <span class="required">*</span>
+                        </label>
 
-    <select
-        id="service"
-        name="service"
-        required
-    >
+                        <select
+                            id="service"
+                            name="service"
+                            required
+                        >
 
-        <option value="">
-            Select a service
-        </option>
+                            <option value="">
+                                Select a service
+                            </option>
 
-        <option value="landing-page">
-            Landing Page Development — Starting From PKR 10,000
-        </option>
+                            <option value="software-development">
+                                Software Development — Project-Based
+                            </option>
 
-        <option value="business">
-            Business Website Development — Starting From PKR 20,000
-        </option>
+                            <option value="business">
+                                Web Development — Starting From PKR 20,000
+                            </option>
 
-        <option value="portfolio">
-            Portfolio Website Development — Starting From PKR 15,000
-        </option>
+                            <option value="web-applications">
+                                Web Applications — Project-Based
+                            </option>
 
-        <option value="ecommerce">
-            E-Commerce Website Development — Starting From PKR 35,000
-        </option>
+                            <option value="system-engineering">
+                                System Engineering — Project-Based
+                            </option>
 
-        <option value="redesign">
-            Website Redesign — Starting From PKR 15,000
-        </option>
+                            <option value="system-integration">
+                                System Integration — Project-Based
+                            </option>
 
-        <option value="speed-optimization">
-            Website Speed Optimization — Starting From PKR 5,000
-        </option>
+                            <option value="technical-operations">
+                                Technical Operations — Project-Based
+                            </option>
 
-        <option value="seo">
-            SEO Setup & Optimization — Starting From PKR 7,500
-        </option>
+                            <option value="ui-ux">
+                                UI / UX Design — Starting From PKR 10,000
+                            </option>
 
-        <option value="maintenance">
-            Website Maintenance & Support — Starting From PKR 5,000 / Month
-        </option>
+                            <option value="maintenance">
+                                Website Maintenance — Starting From PKR 5,000 / Month
+                            </option>
 
-        <option value="ui-ux">
-            UI/UX Design — Starting From PKR 10,000
-        </option>
+                            <option value="system-testing">
+                                System Testing — Project-Based
+                            </option>
 
-        <option value="api-integration">
-            API & Third-Party Integration — Starting From PKR 10,000
-        </option>
+                            <option value="consulting">
+                                IT Consulting — Custom Quote
+                            </option>
 
-        <option value="custom">
-            Custom Web Applications — Starting From PKR 60,000+
-        </option>
+                        </select>
 
-        <option value="consulting">
-            IT Consulting — Custom Quote
-        </option>
-
-    </select>
-
-</div>
+                    </div>
 
 
 
@@ -1039,7 +1000,7 @@
                         <textarea
                             id="requirements"
                             name="requirements"
-                            placeholder="Tell us about your project, required pages, features, design preferences, deadline, or anything else we should know."
+                            placeholder="Describe what you need, the main features or requirements, expected timeline, or any other relevant information."
                         ></textarea>
 
                     </div>
@@ -1057,24 +1018,21 @@
                         >
 
                         <label for="terms">
-
                             I confirm that the information provided
                             is correct and that I am requesting
                             services directly from VEXORIS.
-
                         </label>
 
                     </div>
 
 
 
-                    <!-- CONTINUE -->
-
                     <button
                         type="submit"
                         class="continue-btn"
+                        id="continueBtn"
                     >
-                        Continue to Order Review →
+                        Continue
                     </button>
 
 
@@ -1085,7 +1043,7 @@
 
 
             <!-- =================================
-                 ORDER SUMMARY
+                 SUMMARY
                  ================================= -->
 
             <aside class="checkout-card summary-card">
@@ -1100,11 +1058,11 @@
                     <div>
 
                         <small>
-                            ORDER SUMMARY
+                            REQUEST SUMMARY
                         </small>
 
                         <h2>
-                            Your Selection
+                            Service Details
                         </h2>
 
                     </div>
@@ -1112,8 +1070,6 @@
                 </div>
 
 
-
-                <!-- SELECTED SERVICE -->
 
                 <div class="selected-service">
 
@@ -1126,14 +1082,12 @@
                     </h3>
 
                     <p id="summaryDescription">
-                        Choose a service to see the order amount.
+                        Select a service to view its details.
                     </p>
 
                 </div>
 
 
-
-                <!-- CUSTOMER -->
 
                 <div class="summary-item">
 
@@ -1149,8 +1103,6 @@
 
 
 
-                <!-- SERVICE -->
-
                 <div class="summary-item">
 
                     <span>
@@ -1165,12 +1117,10 @@
 
 
 
-                <!-- AMOUNT -->
-
                 <div class="summary-item">
 
                     <span>
-                        Service Amount
+                        Pricing
                     </span>
 
                     <strong id="summaryAmount">
@@ -1181,12 +1131,10 @@
 
 
 
-                <!-- TOTAL -->
-
                 <div class="total">
 
                     <span>
-                        Total
+                        Estimated Amount
                     </span>
 
                     <strong id="totalAmount">
@@ -1197,46 +1145,39 @@
 
 
 
-                <!-- INFO -->
-
-                <div class="info-box">
+                <div
+                    class="quote-notice"
+                    id="quoteNotice"
+                >
 
                     <strong>
-                        VEXORIS Direct Services
+                        Project quotation required
                     </strong>
 
                     <p>
-                        Payments are collected only for services
-                        provided directly by VEXORIS. VEXORIS does
-                        not collect payments on behalf of third-party
-                        merchants, vendors, or businesses.
+                        This service is project-based. The final
+                        price will depend on your requirements and
+                        will be confirmed after review.
                     </p>
 
                 </div>
 
 
 
-                <!-- SECURITY -->
+                <div class="info-box">
 
-                <ul class="security-list">
+                    <strong>
+                        Direct VEXORIS Services
+                    </strong>
 
-                    <li>
-                        Direct VEXORIS service order
-                    </li>
+                    <p>
+                        This form is for services provided directly
+                        by VEXORIS SOLUTIONS (PRIVATE) LIMITED.
+                        Project requirements and pricing are
+                        reviewed according to the selected service.
+                    </p>
 
-                    <li>
-                        Clear order reference
-                    </li>
-
-                    <li>
-                        Secure payment step follows checkout
-                    </li>
-
-                    <li>
-                        Custom projects require a confirmed quote
-                    </li>
-
-                </ul>
+                </div>
 
 
             </aside>
@@ -1254,117 +1195,114 @@
 
     <footer class="checkout-footer">
 
-        © 2026 VEXORIS. All Rights Reserved.
+        © 2026 VEXORIS SOLUTIONS (PRIVATE) LIMITED.
+        All Rights Reserved.
 
     </footer>
 
 
 
     <!-- =========================================
-         CHECKOUT JAVASCRIPT
+         JAVASCRIPT
          ========================================= -->
 
     <script>
 
         /*
         ============================================
-        VEXORIS CHECKOUT SYSTEM
+        VEXORIS SERVICE DATA
         ============================================
         */
 
-
         const services = {
 
-    "landing-page": {
-        name: "Landing Page Development",
-        price: 10000,
-        description:
-            "Professional, responsive landing pages for businesses, products, campaigns, and online promotions."
-    },
+            "software-development": {
+                name: "Software Development",
+                price: null,
+                type: "project",
+                description:
+                    "Development of custom software and web-based systems designed around specific business processes and operational requirements."
+            },
 
-    business: {
-        name: "Business Website Development",
-        price: 20000,
-        description:
-            "Modern multi-page business websites designed to establish a professional online presence."
-    },
+            "business": {
+                name: "Web Development",
+                price: 20000,
+                type: "starting",
+                description:
+                    "Professional websites and web applications designed for businesses, organizations, professionals, and digital projects."
+            },
 
-    portfolio: {
-        name: "Portfolio Website Development",
-        price: 15000,
-        description:
-            "Personal and professional portfolio websites for freelancers, professionals, creators, and consultants."
-    },
+            "web-applications": {
+                name: "Web Applications",
+                price: null,
+                type: "project",
+                description:
+                    "Browser-based applications developed to support internal workflows, business operations, dashboards, and specialized requirements."
+            },
 
-    ecommerce: {
-        name: "E-Commerce Website Development",
-        price: 35000,
-        description:
-            "Responsive online stores with product pages, shopping functionality, and business-ready design."
-    },
+            "system-engineering": {
+                name: "System Engineering",
+                price: null,
+                type: "project",
+                description:
+                    "Technical planning, implementation, configuration, testing, and optimization of software-based systems."
+            },
 
-    redesign: {
-        name: "Website Redesign",
-        price: 15000,
-        description:
-            "Modernize an existing website with improved design, responsiveness, usability, and performance."
-    },
+            "system-integration": {
+                name: "System Integration",
+                price: null,
+                type: "project",
+                description:
+                    "Connecting software systems and platforms to support required business workflows and technical processes."
+            },
 
-    "speed-optimization": {
-        name: "Website Speed Optimization",
-        price: 5000,
-        description:
-            "Improve website loading speed, performance, responsiveness, and overall user experience."
-    },
+            "technical-operations": {
+                name: "Technical Operations",
+                price: null,
+                type: "project",
+                description:
+                    "Technical configuration, deployment assistance, monitoring, troubleshooting, maintenance, and operational support."
+            },
 
-    seo: {
-        name: "SEO Setup & Optimization",
-        price: 7500,
-        description:
-            "Basic technical SEO, search-friendly website structure, metadata optimization, and performance improvements."
-    },
+            "ui-ux": {
+                name: "UI / UX Design",
+                price: 10000,
+                type: "starting",
+                description:
+                    "Clean and practical interfaces designed to make software and websites easier to understand and use."
+            },
 
-    maintenance: {
-        name: "Website Maintenance & Support",
-        price: 5000,
-        description:
-            "Website updates, content changes, technical maintenance, security improvements, and ongoing support."
-    },
+            "maintenance": {
+                name: "Website Maintenance",
+                price: 5000,
+                type: "monthly",
+                description:
+                    "Ongoing updates, technical maintenance, performance improvements, troubleshooting, and website support."
+            },
 
-    "ui-ux": {
-        name: "UI/UX Design",
-        price: 10000,
-        description:
-            "Clean and user-focused interface designs that improve usability, consistency, and digital experiences."
-    },
+            "system-testing": {
+                name: "System Testing",
+                price: null,
+                type: "project",
+                description:
+                    "Functional testing, troubleshooting, integration testing, and technical verification before deployment."
+            },
 
-    "api-integration": {
-        name: "API & Third-Party Integration",
-        price: 10000,
-        description:
-            "Integration of APIs and third-party services to connect websites and applications with external platforms."
-    },
+            "consulting": {
+                name: "IT Consulting",
+                price: null,
+                type: "quote",
+                description:
+                    "Practical technology guidance covering software, systems, infrastructure planning, and technical decision-making."
+            }
 
-    custom: {
-        name: "Custom Web Applications",
-        price: 60000,
-        description:
-            "Custom web-based applications built around specific business workflows, requirements, and processes."
-    },
+        };
 
-    consulting: {
-        name: "IT Consulting",
-        price: null,
-        description:
-            "Technology strategy, digital transformation, infrastructure planning, and practical IT guidance for businesses."
-    }
-
-};
 
 
         /*
         ============================================
-        GET ELEMENTS
+        ELEMENTS
         ============================================
         */
 
@@ -1395,6 +1333,9 @@
         const summaryCustomer =
             document.getElementById("summaryCustomer");
 
+        const quoteNotice =
+            document.getElementById("quoteNotice");
+
         const fullName =
             document.getElementById("fullName");
 
@@ -1409,15 +1350,28 @@
         ============================================
         */
 
-        function formatPrice(price) {
+        function formatPrice(price, type) {
 
-            if (price === null) {
+            if (type === "project") {
+                return "Project Quote";
+            }
+
+            if (type === "quote") {
                 return "Custom Quote";
             }
 
-            return "PKR " +
-                price.toLocaleString("en-PK");
+            if (type === "monthly") {
+                return "PKR " +
+                    price.toLocaleString("en-PK") +
+                    " / Month";
+            }
 
+            if (type === "starting") {
+                return "From PKR " +
+                    price.toLocaleString("en-PK");
+            }
+
+            return "—";
         }
 
 
@@ -1443,7 +1397,7 @@
                     "—";
 
                 summaryDescription.textContent =
-                    "Choose a service to see the order amount.";
+                    "Select a service to view its details.";
 
                 summaryAmount.textContent =
                     "—";
@@ -1454,10 +1408,11 @@
                 serviceMessage.style.display =
                     "none";
 
+                quoteNotice.style.display =
+                    "none";
+
                 return;
-
             }
-
 
 
             summaryService.textContent =
@@ -1470,11 +1425,16 @@
                 selected.description;
 
             summaryAmount.textContent =
-                formatPrice(selected.price);
+                formatPrice(
+                    selected.price,
+                    selected.type
+                );
 
             totalAmount.textContent =
-                formatPrice(selected.price);
-
+                formatPrice(
+                    selected.price,
+                    selected.type
+                );
 
 
             serviceMessageName.textContent =
@@ -1483,13 +1443,34 @@
             serviceMessage.style.display =
                 "block";
 
+
+            /*
+            Show quotation notice only
+            where a fixed price does not exist.
+            */
+
+            if (
+                selected.type === "project" ||
+                selected.type === "quote"
+            ) {
+
+                quoteNotice.style.display =
+                    "block";
+
+            } else {
+
+                quoteNotice.style.display =
+                    "none";
+
+            }
+
         }
 
 
 
         /*
         ============================================
-        READ SERVICE FROM INDEX PAGE
+        READ SERVICE FROM HOMEPAGE
         ============================================
         */
 
@@ -1539,7 +1520,7 @@
 
         /*
         ============================================
-        CUSTOMER NAME LIVE UPDATE
+        CUSTOMER NAME
         ============================================
         */
 
@@ -1557,7 +1538,7 @@
 
         /*
         ============================================
-        SUBMIT CHECKOUT
+        SUBMIT
         ============================================
         */
 
@@ -1575,7 +1556,7 @@
                 if (!selected) {
 
                     alert(
-                        "Please select a service before continuing."
+                        "Please select a service."
                     );
 
                     serviceSelect.focus();
@@ -1585,12 +1566,11 @@
                 }
 
 
-
                 /*
-                Create order reference
+                Generate request reference.
                 */
 
-                const orderReference =
+                const requestReference =
                     "VEX-" +
                     Math.random()
                         .toString(36)
@@ -1598,18 +1578,14 @@
                         .toUpperCase();
 
 
-
                 /*
-                Save order information
-
-                This will later be used by
-                payment.html and thank-you.html.
+                Create request object.
                 */
 
-                const order = {
+                const request = {
 
                     reference:
-                        orderReference,
+                        requestReference,
 
                     customer: {
 
@@ -1642,7 +1618,10 @@
                             selected.name,
 
                         price:
-                            selected.price
+                            selected.price,
+
+                        pricingType:
+                            selected.type
 
                     },
 
@@ -1655,37 +1634,32 @@
                     createdAt:
                         new Date().toISOString(),
 
-                    paymentStatus:
-                        "pending"
+                    status:
+                        "request-submitted"
 
                 };
 
 
-
                 /*
-                Save order in browser
+                Temporary browser storage.
 
-                IMPORTANT:
-                This is only temporary frontend
-                storage. Later, the real backend
-                will handle orders securely.
+                The production version should
+                create the request through your
+                backend/database.
                 */
 
                 localStorage.setItem(
                     "vexorisOrder",
-                    JSON.stringify(order)
+                    JSON.stringify(request)
                 );
 
 
-
                 /*
-NEXT STEP
+                Continue to the next step.
+                */
 
-Go to payment page.
-*/
-
-window.location.href = "payment.html";
-                
+                window.location.href =
+                    "payment.html";
 
             }
         );
